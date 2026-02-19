@@ -1,0 +1,1296 @@
+/* =========================================
+HERO SECTION
+========================================= */
+.hero {
+
+  /* 1. Layout Mode */
+
+  display: flex;
+
+  justify-content: space-between;
+
+ 
+
+  /* 2. ALIGNMENT: Top-aligned (like Projects/About) instead of centered */
+
+  align-items: flex-start;
+
+ 
+
+  /* 3. WIDTH CONSTRAINT (The Critical Fix) */
+
+  /* This overrides the 1600px .container and matches your other pages */
+
+  max-width: 95% !important;
+
+  width: 100%;
+
+  margin:    auto; /* Centers the block */
+
+
+
+  /* 4. SPACING */
+
+  /* Matches the exact top gap of other pages */
+
+  padding-top: 60px;
+
+  padding-bottom: 4rem;
+
+  padding-left: 2rem;
+
+  padding-right: 2rem;
+
+ 
+
+  position: relative;
+
+}
+
+/* =========================================
+   PREMIUM INTRO TEXT
+   ========================================= */
+.hero-intro {
+  /* 1. Typography */
+  font-size: 0.95rem;      /* Small but legible */
+  font-weight: 700;        /* Bold to stand out */
+   /* Uppercase = Structure */
+  letter-spacing: 0.15em;  /* The "Premium" Secret (Wide Spacing) */
+  
+  /* 2. Coloring (Gradient Text) */
+  background: linear-gradient(90deg, #60A5FA, #A78BFA); /* Blue to Purple fade */
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  color: #2563EB; /* Fallback color */
+
+  /* 3. Positioning */
+  margin-bottom: 0.5rem; /* Tight gap to the main title */
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+/* Optional: Animate the Hand Wave */
+.wave {
+  display: inline-block;
+  font-size: 1.2rem;
+  -webkit-text-fill-color: initial; /* Keep the emoji original color */
+  animation: wave-animation 2.5s infinite;
+  transform-origin: 70% 70%;
+}
+
+@keyframes wave-animation {
+  0% { transform: rotate( 0.0deg) }
+  10% { transform: rotate(14.0deg) }
+  20% { transform: rotate(-8.0deg) }
+  30% { transform: rotate(14.0deg) }
+  40% { transform: rotate(-4.0deg) }
+  50% { transform: rotate(10.0deg) }
+  60% { transform: rotate( 0.0deg) }
+  100% { transform: rotate( 0.0deg) }
+}
+
+.hero-content {
+
+
+
+  display: flex;
+
+
+
+  align-items: center;
+
+
+
+  justify-content: space-between;
+
+
+
+  width: 100%; /* Forces the content to take full available width */
+
+
+
+  max-width: 100%; /* Prevents accidental overflow */
+
+
+
+  gap: 4rem;
+
+
+
+  flex-wrap: wrap;
+
+
+
+  padding-top: 6px;
+
+
+
+  margin-bottom: 2rem;
+
+
+
+  line-height: 1.1;
+
+
+
+}
+
+
+
+
+
+
+
+.hero-content .badge {
+
+
+
+  margin: 0;
+
+
+
+}
+
+
+
+
+
+
+
+.hero-title {
+
+  line-height: 1.1;
+
+  margin: 1.5rem 0 1.5rem;
+
+  font-size: clamp(2.4rem, 4vw, 3.5rem);
+
+
+
+}
+
+
+
+
+
+
+
+.hero-subtitle {
+
+  font-size: 1.1rem;
+
+  line-height: 1.7;
+
+  margin: 2rem 0 0;
+
+  width: 100%;
+
+  color: var(--text-secondary);
+
+}
+
+
+
+
+
+
+
+.hero-actions {
+
+
+
+  margin-top: 3rem;
+
+
+
+  display: flex;
+
+
+
+  flex-wrap: wrap;
+
+
+
+  gap: 1rem;
+
+
+
+}
+
+
+
+
+
+
+
+.hero-text {
+
+
+
+  flex: 1;
+
+
+
+  min-width: 300px;
+
+
+
+  margin-bottom: 1rem;
+
+
+
+  line-height: 1.6;
+
+
+
+}
+
+
+
+
+
+
+
+.hero-image {
+
+
+
+  flex: 1;
+
+
+
+  min-width: 30%;
+
+
+
+  background: none;
+
+
+
+  padding: 0;
+
+
+
+  box-shadow: none;
+
+
+
+}
+
+
+
+
+
+
+
+.hero-image img {
+
+
+
+  width: 100%;
+
+
+
+  border-radius: 0;
+
+
+
+  background: transparent;
+
+
+
+  filter: drop-shadow(0 30px 60px rgba(122, 164, 243, 0.528))
+
+
+
+          drop-shadow(0 0 40px rgba(96, 138, 218, 0.518));
+
+
+
+  transition: transform 0.4s ease, filter 0.4s ease;
+
+
+
+}
+
+
+
+
+
+
+
+.hero-image img:hover {
+
+
+
+  transform: translateY(-6px) scale(1.01);
+
+
+
+}
+
+
+
+
+
+
+
+/* =========================================
+
+
+
+   WORK SECTION
+
+
+
+   ========================================= */
+
+
+
+.work {
+
+
+
+  padding: 6rem 2rem;
+
+  width: 100%;
+
+
+
+}
+
+
+
+
+
+
+
+.section-title {
+
+
+
+  text-align: center;
+
+
+
+  margin-top: -3rem;
+
+
+
+  margin-bottom: 4rem;
+
+
+
+  font-size: 50px;
+
+
+
+}
+
+
+
+
+
+
+
+/* WORK ITEM (The Link Wrapper) */
+
+
+
+.work-item {
+
+
+
+  display: flex;
+
+
+
+  align-items: center;
+
+
+
+  gap: 3rem;
+
+
+
+  margin-bottom: 5rem;
+
+
+
+  flex-wrap: wrap;
+
+
+
+  transition: transform 0.4s ease;
+
+
+
+  padding: 0 2rem;
+
+
+
+  text-decoration: none; /* Remove underline from Link */
+
+
+
+  color: inherit;
+
+
+
+}
+
+
+
+
+
+
+
+.work-item:hover {
+
+
+
+  transform: translateY(-6px);
+
+
+
+}
+
+
+
+
+
+
+
+.work-item.reverse {
+
+
+
+  flex-direction: row-reverse;
+
+
+
+}
+
+
+
+
+
+
+
+/* IMAGE CONTAINER */
+
+
+
+.work-item-image {
+
+
+
+  flex: 1;
+
+
+
+  padding: 1rem;
+
+
+
+  overflow: hidden;
+
+
+
+  border-radius: 1.25rem;
+
+
+
+  box-shadow: inset 0 0 0 1px rgba(255,255,255,0.08);
+
+
+
+  position: relative; /* Necessary for Overlay positioning */
+
+
+
+}
+
+
+
+
+
+
+
+.work-item-image img {
+
+
+
+  width: 100%;
+
+
+
+  display: block;
+
+
+
+  border-radius: 1rem;
+
+
+
+  filter: grayscale(0%) contrast(1.1);
+
+
+
+  transition: filter 0.6s ease, transform 0.6s ease;
+
+
+
+}
+
+
+
+
+
+
+
+[data-theme="light"] .work-item-image {
+
+
+
+  box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.1);
+
+
+
+  background: none;
+
+
+
+}
+
+
+
+
+
+
+
+/* Hover States for Image */
+
+
+
+.work-item:hover img {
+
+
+
+  filter: grayscale(0%);
+
+
+
+  transform: scale(1.04);
+
+
+
+}
+
+
+
+
+
+
+
+/* DETAILS BOX */
+
+
+
+.work-item-details {
+
+
+
+  flex: 1;
+
+
+
+  min-width: 250px;
+
+
+
+  padding: 2.5rem; /* Slightly more padding */
+
+
+
+  border-radius: 1.25rem;
+
+
+
+  backdrop-filter: blur(14px);
+
+
+
+  transition: background 0.4s ease, box-shadow 0.4s ease;
+
+
+
+ 
+
+
+
+  /* Flexbox to separate text from button */
+
+
+
+  display: flex;
+
+
+
+  flex-direction: column;
+
+
+
+  justify-content: space-between;
+
+
+
+  gap: 2rem;
+
+
+
+  align-items: flex-start;
+
+
+
+}
+
+
+
+
+
+
+
+.details-text h3 {
+
+
+
+  font-size: 1.75rem;
+
+
+
+  font-weight: 600;
+
+
+
+  margin-bottom: 0.5rem;
+
+
+
+  color: var(--text-primary);
+
+
+
+}
+
+
+
+
+
+
+
+.details-text p {
+
+
+
+  color: var(--text-secondary);
+
+
+
+  font-size: 8px;
+
+
+
+}
+
+
+
+
+
+
+
+/* NEW CASE STUDY BUTTON STYLE */
+
+
+
+.case-study-btn {
+
+
+
+  display: inline-flex;
+
+
+
+  align-items: center;
+
+
+
+  gap: 8px;
+
+
+
+ 
+
+
+
+  font-size: 1rem;
+
+
+
+  font-weight: 600;
+
+
+
+  color: var(--text-primary);
+
+
+
+ 
+
+
+
+  /* Pill Shape Background */
+
+
+
+  background: var(--glass-bg);
+
+
+
+  border: var(--glass-border);
+
+
+
+  padding: 12px 24px;
+
+
+
+  border-radius: 99px;
+
+
+
+ 
+
+
+
+  transition: all 0.3s ease;
+
+
+
+}
+
+
+
+/* [data-theme="light"] .case-study-btn {
+
+  border: var(--glass-border);
+
+} */
+
+
+
+/* Hover Effect for the Button */
+
+
+
+.work-item:hover .case-study-btn {
+
+
+
+  background: var(--accent); /* Blue */
+
+
+
+  border-color: var(--accent);
+
+
+
+  color: white;
+
+
+
+  transform: translateX(5px); /* Subtle slide */
+
+
+
+}
+
+
+
+
+
+
+
+/* Hover Effect for Details Box Background */
+
+
+
+.work-item:hover .work-item-details {
+
+
+
+  background: rgba(27, 95, 222, 0.05); /* Very subtle blue tint */
+
+  border: var(--glass-border);
+
+  box-shadow: 0 10px 40px rgba(27, 95, 222, 0.1);
+
+
+
+}
+
+
+
+
+
+
+
+.work-item:hover .work-item-details {
+
+
+
+  background: rgba(27, 95, 222, 0.08);
+
+
+
+  box-shadow: 0 10px 40px rgba(27, 95, 222, 0.18);
+
+
+
+}
+
+
+
+
+
+
+
+.work-item-details h3 {
+
+
+
+  font-size: 1.5rem;
+
+
+
+  font-weight: 600;
+
+
+
+  margin-bottom: 0.5rem;
+
+
+
+  color: var(--text-primary);
+
+
+
+}
+
+
+
+
+
+
+
+.work-item-details p {
+
+
+
+  color: var(--text-secondary);
+
+
+
+  font-size: 0.88rem;
+
+
+
+}
+
+
+
+
+
+
+
+/* =========================================
+
+
+
+   "VIEW ALL" BUTTON STYLES
+
+
+
+   ========================================= */
+
+
+
+.center-btn {
+
+
+
+  margin-top: 4rem;
+
+
+
+  text-align: center;
+
+
+
+  display: flex;
+
+
+
+  justify-content: center;
+
+
+
+}
+
+
+
+
+
+
+
+.btn-view-all {
+
+
+
+  display: inline-flex;
+
+
+
+  align-items: center;
+
+
+
+  gap: 8px;
+
+
+
+  padding: 16px 32px;
+
+
+
+  border-radius: 99px;
+
+
+
+  font-weight: 600;
+
+
+
+  font-size: 1rem;
+
+
+
+  text-decoration: none;
+
+
+
+ 
+
+
+
+  /* Glass Effect to match your theme */
+
+
+
+  background: rgba(255, 255, 255, 0.05);
+
+
+
+  border: 1px solid rgba(255, 255, 255, 0.1);
+
+
+
+  color: var(--text-primary);
+
+
+
+ 
+
+
+
+  transition: all 0.3s ease;
+
+
+
+}
+
+
+
+
+
+
+
+.btn-view-all:hover {
+
+
+
+  background: var(--accent); /* Matches your global blue */
+
+
+
+  border-color: var(--accent);
+
+
+
+  color: #ffffff;
+
+
+
+  transform: translateY(-3px);
+
+
+
+  box-shadow: 0 10px 30px rgba(37, 99, 235, 0.3);
+
+
+
+}
+
+
+
+
+
+
+
+[data-theme="light"] .btn-view-all {
+
+
+
+  background: rgba(0, 0, 0, 0.05);
+
+
+
+  border-color: rgba(0, 0, 0, 0.1);
+
+
+
+  color: #000;
+
+
+
+}
+
+
+
+
+
+
+
+[data-theme="light"] .btn-view-all:hover {
+
+
+
+  background: #000;
+
+
+
+  color: #fff;
+
+
+
+}
+
+
+
+/* =========================================
+
+   RESPONSIVE (TABLET & MOBILE)
+
+   ========================================= */
+
+
+
+/* --- TABLET (Portrait & Landscape) --- */
+
+@media (max-width: 1024px) {
+
+ 
+
+  /* 1. Hero Layout: Stack vertically on tablet */
+
+  .hero {
+
+    flex-direction: column;
+
+    padding-top: 40px;
+
+    padding-left: 1.5rem;
+
+    padding-right: 1.5rem;
+
+    max-width: 100% !important; /* Allow full width */
+
+  }
+
+
+
+  .hero-content {
+
+    flex-direction: column; /* Stack Text and Image */
+
+    gap: 3rem;
+
+    align-items: center;
+
+    text-align: center;
+
+  }
+
+
+
+  .hero-text {
+
+    width: 100%;
+
+    margin-bottom: 2rem;
+
+  }
+
+
+
+  .hero-actions {
+
+    justify-content: center; /* Center buttons */
+
+  }
+
+
+
+  .hero-image {
+
+    width: 100%;
+
+    max-width: 500px; /* Limit image size on tablet */
+
+  }
+
+
+
+  /* 2. Work Items: Stack them sooner */
+
+  .work-item,
+
+  .work-item.reverse {
+
+    gap: 3rem;
+
+    padding: 0 1rem;
+
+  }
+
+}
+
+
+
+/* --- MOBILE (Phones) --- */
+
+@media (max-width: 768px) {
+
+ 
+
+  /* 1. Hero Typography */
+
+  .hero-title {
+
+    font-size: 2.5rem; /* Smaller title */
+
+  }
+
+ 
+
+  .hero-subtitle {
+
+    font-size: 1rem;
+
+  }
+
+
+
+  /* 2. Work Items: Full Stack */
+
+  .work-item,
+
+  .work-item.reverse {
+
+    flex-direction: column; /* Image on top, Text below */
+
+    margin-bottom: 4rem;
+
+    gap: 1.5rem;
+
+  }
+
+
+
+  .work-item-image {
+
+    width: 100%;
+
+    padding: 0.5rem; /* Less padding inside frame */
+
+  }
+
+
+
+  .work-item-image img {
+
+    filter: grayscale(0%); /* Always colorful on mobile */
+
+  }
+
+
+
+  .work-item-details {
+
+    padding: 1.5rem; /* Compact padding */
+
+    width: 100%;
+
+    text-align: left; /* Keep text left-aligned for readability */
+
+    align-items: flex-start;
+
+  }
+
+ 
+
+  .section-title {
+
+    font-size: 2.5rem;
+
+    margin-bottom: 2rem;
+
+  }
+
+ 
+
+  /* 3. Button Adjustments */
+
+  .hero-actions {
+
+    flex-direction: column; /* Stack buttons on small phones */
+
+    width: 100%;
+
+  }
+
+ 
+
+  .button-primary,
+
+  .button-secondary {
+
+    width: 100%; /* Full width buttons */
+
+    justify-content: center;
+
+  }
+
+}

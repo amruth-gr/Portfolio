@@ -1,0 +1,159 @@
+  /* =========================================
+    MINIMAL FOOTER STYLES
+    ========================================= */
+  .footer {
+    position: relative;
+    background: var(--bg-primary);
+    /* Less padding for a tighter look */
+    padding: 3rem 0; 
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
+    overflow: hidden;
+  }
+
+  /* TOP GLOW */
+  .footer-glow {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 60%;
+    height: 1px;
+    background: linear-gradient(
+      90deg, 
+      transparent 0%, 
+      rgba(99, 102, 241, 0.5) 80%, 
+      transparent 100%
+    );
+    box-shadow: 0 0 30px 1px rgba(99, 102, 241, 0.3);
+  }
+
+  .footer-container {
+    display: flex;
+    flex-direction: column;
+  }
+
+  /* --- MAIN ROW (Flexbox) --- */
+  .footer-main {
+    display: flex;
+    justify-content: space-between;
+    align-items: center; /* Vertically center everything */
+  }
+
+  /* LEFT SIDE: Brand & Copyright */
+  .footer-brand {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .brand,
+  .brand-logo {
+    font-family: 'Inter', sans-serif;
+    font-weight: 600;
+    font-size: 20px;
+    letter-spacing: -0.5px;
+  }
+
+  .copyright {
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+    opacity: 0.7;
+    margin: 0;
+  }
+
+  /* RIGHT SIDE: Social Icons */
+  .social-icons {
+    display: flex;
+    gap: 12px;
+  }
+
+  .icon-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 44px; /* Slightly bigger touch target */
+    height: 44px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    color: var(--text-secondary);
+    transition: all 0.3s ease;
+  }
+
+  .icon-btn:hover {
+    background: var(--accent);
+    border-color: var(--accent);
+    color: #ffffff;
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(99, 102, 241, 0.3);
+  }
+
+  /* =========================================
+    LIGHT MODE OVERRIDES
+    ========================================= */
+  [data-theme="light"] .footer {
+    background: #ececec14;
+    border-top-color: rgba(0,0,0,0.05);
+  }
+  [data-theme="light"] .footer-glow {
+    background: linear-gradient(
+      90deg, 
+      transparent 0%, 
+      rgba(99, 102, 241, 0.5) 80%, 
+      transparent 100%
+    );
+    box-shadow: 0 0 30px 1px rgba(99, 102, 241, 0.3);
+  }
+  [data-theme="light"] .icon-btn {
+    background: rgba(0,0,0,0.03);
+    border-color: rgba(0,0,0,0.05);
+    color: #555;
+  }
+  [data-theme="light"] .icon-btn:hover {
+    background: var(--accent);
+    color: #fff;
+  }
+
+  /* =========================================
+   RESPONSIVE FOOTER (Mobile & Tablet)
+   ========================================= */
+
+@media (max-width: 768px) {
+  
+  .footer {
+    padding: 3rem 1.5rem;
+    /* Add padding-bottom to account for the floating bottom navbar */
+    padding-bottom: 7rem; 
+  }
+
+  .footer-main {
+    flex-direction: column;
+    gap: 2.5rem;
+    text-align: center; /* Center align everything */
+    align-items: center; 
+  }
+
+  /* Stack Brand & Copyright */
+  .footer-brand {
+    align-items: center; /* Center the logo and text */
+    gap: 0.75rem;
+  }
+
+  .copyright {
+    font-size: 0.85rem;
+    line-height: 1.5;
+  }
+
+  /* Social Icons */
+  .social-icons {
+    justify-content: center; /* Center icons */
+    gap: 1.5rem; /* More spacing for touch targets */
+    width: 100%;
+  }
+
+  .icon-btn {
+    width: 48px; /* Larger touch target */
+    height: 48px;
+    font-size: 1.2rem;
+  }
+}

@@ -1,0 +1,378 @@
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600;700&display=swap');
+.navbar {
+  position: fixed;
+  top: 24px;
+  width: 100%;
+  z-index: 100;
+  display: flex;
+  justify-content: center;
+}
+
+/* ===== FLOATING PILL ===== */
+/* Base */
+.navbar-pill {
+    width: 95%;
+  /* max-width: 1400px; */
+  height: 70px;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  padding: 0 22px;
+  border-radius: 32px;
+  backdrop-filter: blur(20px) saturate(180%);
+  -webkit-backdrop-filter: blur(50px) saturate(180%);
+  transition: all 0.25s ease;
+}
+[data-theme="dark"] .navbar-pill {
+  background: rgba(255, 255, 255, 0.06);
+  border: var(--glass-border);
+  box-shadow:var(--glass-shadow);
+}
+/* LIGHT MODE NAVBAR PILL */
+[data-theme="light"] .navbar-pill {
+  /* CHANGE THIS: 0.85 -> 0.5 */
+  background: rgba(255, 255, 255, 0.5); 
+  
+  /* ADD THIS: Boost saturation so colors behind don't look gray */
+  backdrop-filter: blur(30px) saturate(200%);
+  -webkit-backdrop-filter: blur(40px) saturate(180%);
+  
+  /* Keep your existing border/shadow */
+  border: var(--glass-border);
+  box-shadow: var(--glass-shadow);
+}
+
+
+/* =========================================
+   LOGO IMAGE STYLES
+   ========================================= */
+/* Update in navbar.css */
+.brand-logo-img {
+  /* 1. Increase height (try 50px or 60px) */
+  height: 30px; 
+  
+  /* 2. Ensure width automatically adjusts */
+  width: auto;  
+  
+  /* 3. Make sure it doesn't get distorted */
+  object-fit: cover; 
+  
+  /* 4. Remove any padding that might be squishing it */
+  padding: 0;
+  display: block;
+}
+
+/* Ensure the parent link doesn't restrict it */
+.brand {
+  display: flex;
+  align-items: center;
+  height: 100%; /* Match navbar height */
+}
+
+.brand:hover .brand-logo-img {
+  transform: scale(1.05); /* Slight zoom on hover */
+}
+
+.logo-dark {
+  display: block; /* Show White Logo */
+}
+.logo-light {
+  display: none;  /* Hide Black Logo */
+}
+
+body.light-mode .logo-dark,
+html.light-mode .logo-dark,
+[data-theme="light"] .logo-dark {
+  display: none !important; /* Hide White Logo */
+}
+
+body.light-mode .logo-light,
+html.light-mode .logo-light,
+[data-theme="light"] .logo-light {
+  display: block !important; /* Show Black Logo */
+}
+
+/* ===== CENTER LINKS (The Inner Pill Frame) ===== */
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 8px; /* Tighter gap since we are inside a frame */
+  
+  /* The "Child Pill" Frame Styles */
+  padding: 6px 8px; /* Breathing room inside the frame */
+  border-radius: 999px; /* Makes it a pill */
+  border: 1px solid transparent;
+  transition: all 0.3s ease;
+}
+
+/* Light Mode Inner Pill Track */
+[data-theme="light"] .nav-links {
+  background: var(--glass-bg); /* Subtle gray track */
+  border-color: rgba(0, 0, 0, 0.08);
+}
+
+/* Dark Mode Inner Pill Track */
+[data-theme="dark"] .nav-links {
+  background: rgba(255, 255, 255, 0.05); /* Subtle white track */
+  border-color: rgba(255, 255, 255, 0.05);
+}
+
+/* ===== INDIVIDUAL NAV ITEMS ===== */
+.nav-item {
+  position: relative;
+  font-size: 16px;
+  font-weight: 500;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  color: var(--text-secondary);
+  text-decoration: none;
+  cursor: pointer;
+  
+  /* Dimensions for the hover/active pill */
+  padding: 6px 18px;
+  border-radius: 999px;
+  transition: all 0.25s ease;
+}
+
+.nav-item:hover {
+  color: var(--text-primary);
+  background: rgba(125, 125, 125, 0.1); /* Subtle hover effect */
+}
+
+/* ===== ACTIVE STATE (The White/Dark Bubble) ===== */
+.nav-item.active {
+  color: var(--text-primary);
+  font-weight: 800;
+  
+  /* Create the "Bubble" effect for the active tab */
+  background: var(--bg-primary, #fff); 
+  box-shadow: var(--glass-shadow); 
+}
+
+/* Dark mode active bubble adjustment */
+[data-theme="dark"] .nav-item.active {
+  background: rgba(255, 255, 255, 0.15);
+  color: #fff;
+}
+
+/* ===== RIGHT ===== */
+.nav-right {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+/* .resume-btn {
+  background: var(--accent);
+  color: #fff;
+  border: none;
+  padding: 8px 14px;
+  border-radius: 999px;
+  font-size: 14px;
+  cursor: pointer;
+} */
+/* Wrapper */
+.theme-toggle-wrapper {
+  position: relative; /* Essential: Allows the tooltip to float relative to this box */
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.theme-toggle {
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  border: var(--glass-border);
+  box-shadow: var(--glass-shadow);
+  background: transparent;
+  color: var(--text-primary);
+  display: inline-flex;
+  position: relative;
+  place-items: center;
+  cursor: pointer;
+  justify-content: center;
+}
+
+.theme-tooltip {
+  /* Positioning */
+  position: absolute;
+  top: 115%; /* Push it just below the button */
+  left: 50%;
+  transform: translateX(-50%) translateY(-5px); /* Start slightly higher for animation */
+  
+  /* Sizing & Text */
+  white-space: nowrap; /* Prevents text from wrapping */
+  font-size: 12px;
+  font-weight: 500;
+  padding: 6px 12px;
+  border-radius: 16px;
+  pointer-events: none; /* Mouse ignores it */
+  
+  /* The "Hidden" State */
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.2s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+  
+  /* GLASS EFFECT BASE */
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  z-index: 200;
+}
+
+/* 3. HOVER EFFECT (Reveal) */
+.theme-toggle-wrapper:hover .theme-tooltip {
+  opacity: 1;
+  visibility: visible;
+  transform: translateX(-50%) translateY(0); /* Slide into place */
+}
+
+/* 4. THEME SPECIFIC COLORS (Contrast is key) */
+
+/* If App is in Dark Mode -> Tooltip should be Light/White */
+[data-theme="dark"] .theme-tooltip {
+  background: rgba(255, 255, 255, 0.9);
+  color: #000;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+}
+
+/* If App is in Light Mode -> Tooltip should be Dark/Black */
+[data-theme="light"] .theme-tooltip {
+  background: rgba(0, 0, 0, 0.8);
+  color: #fff;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+/* =========================================
+   RESUME BUTTON & TOOLTIP
+   ========================================= */
+
+/* 1. Wrapper to hold Button + Tooltip together */
+.resume-wrapper {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* 2. The Resume Button Styling */
+.resume-btn {
+  background: var(--accent); /* Uses your global purple/blue */
+  color: #ffffff;
+  text-decoration: none; /* Removes underline from <a> tag */
+  padding: 10px 24px;
+  border-radius: 99px;
+  font-size: 15px;
+  font-weight: 600;
+  border: none;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(99, 102, 241, 0.35); /* Glow effect */
+}
+
+.resume-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(99, 102, 241, 0.5);
+  background: #4f46e5; /* Slightly darker purple on hover */
+}
+
+/* 3. The Tooltip (Hidden by default) */
+.resume-tooltip {
+  position: absolute;
+  top: 125%; /* Positions it below the button */
+  left: 50%;
+  transform: translateX(-50%) translateY(-10px); /* Start slightly higher */
+  
+  white-space: nowrap;
+  font-size: 12px;
+  font-weight: 600;
+  padding: 6px 14px;
+  border-radius: 99px;
+  pointer-events: none; /* Mouse ignores it */
+  
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.2s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+  
+  backdrop-filter: blur(8px);
+  z-index: 200;
+}
+
+/* 4. Hover State: Show Tooltip */
+.resume-wrapper:hover .resume-tooltip {
+  opacity: 1;
+  visibility: visible;
+  transform: translateX(-50%) translateY(0);
+}
+
+/* 5. Theme Adaptive Colors */
+
+/* Dark Mode: White Tooltip */
+[data-theme="dark"] .resume-tooltip {
+  background: rgba(255, 255, 255, 0.9);
+  color: #000;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+}
+
+/* Light Mode: Black Tooltip */
+[data-theme="light"] .resume-tooltip {
+  background: rgba(0, 0, 0, 0.85);
+  color: #fff;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+}
+
+/* =========================================
+   RESPONSIVE NAVBAR (Mobile & Tablet)
+   ========================================= */
+
+@media (max-width: 768px) {
+  
+  /* 1. Adjust Pill Container */
+  .navbar {
+    top: auto; /* Remove top positioning */
+    bottom: 24px; /* Move to bottom for easier thumb access on mobile */
+  }
+
+  .navbar-pill {
+    width: 90%; /* Slightly narrower */
+    height: 60px; /* More compact */
+    padding: 0 16px;
+  }
+
+  /* 2. Brand: Hide text, keep logo or just make smaller */
+  .brand-logo {
+    font-size: 18px;
+    display: none; /* Optional: Hide brand text to save space for links */
+  }
+
+  /* 3. Navigation Links: Horizontal Scroll */
+  .nav-links {
+    flex: 1; /* Take up available space */
+    justify-content: center; /* Center the links */
+    gap: 4px;
+  }
+
+  .nav-item {
+    font-size: 14px; /* Smaller text */
+    padding: 8px 12px; /* Smaller touch targets */
+  }
+
+  /* 4. Right Side (Theme Toggle) */
+  .nav-right {
+    gap: 8px;
+  }
+  
+  .theme-toggle {
+    width: 30px;
+    height: 30px;
+  }
+}
+
+/* Extra Small Phones */
+@media (max-width: 380px) {
+  .nav-item {
+    padding: 6px 10px;
+    font-size: 13px;
+  }
+}

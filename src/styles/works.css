@@ -1,0 +1,360 @@
+/* =========================================
+   WORKS PAGE STYLES (Fixed & Polished)
+   ========================================= */
+.works {
+  /* Let index.css handle the max-width and top padding */
+  width: 100%;
+  position: relative;
+  padding-bottom: 4rem;
+}
+
+/* --- HERO SECTION --- */
+.works-hero {
+  position: relative;
+  width: 100%;
+  margin-bottom: 6rem;
+  z-index: 1;
+}
+
+.works-hero::before {
+  content: "";
+  position: absolute;
+  top: -20%; 
+  left: 50%;
+  transform: translateX(-50%);
+  width: 800px;
+  height: 500px;
+  background: radial-gradient(
+    50% 50% at 50% 50%, 
+    rgba(37, 99, 235, 0.25) 0%, 
+    transparent 100%
+  );
+  filter: blur(100px);
+  z-index: -1;
+  pointer-events: none;
+}
+
+.works-title {
+  font-size: clamp(2.4rem, 4vw, 3.5rem);
+  line-height: 1.1;
+  margin: 1.5rem 0 1.5rem;
+}
+
+.works-intro {
+  font-size: 1.1rem;
+  line-height: 1.7;
+  width: 100%;
+   /* Limits line length for readability */
+  color: var(--text-secondary);
+}
+
+/* --- THE ZIG-ZAG LIST --- */
+.works-list {
+  display: flex;
+  flex-direction: column;
+  gap: 5rem;
+  width: 100%;
+  margin: 0 auto;
+}
+
+/* --- PROJECT ROW (The Card) --- */
+.project-row {
+  display: flex;
+  align-items: center;
+  gap: 4rem;
+  
+  text-decoration: none;
+  color: var(--text-primary);
+  
+  padding: 2rem;
+  border-radius: 32px;
+  
+  /* GLASS BASE (Dark Mode) */
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(10px);
+  
+  transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+}
+
+/* THE MAGIC: Flip every even child (Zig-Zag) */
+.project-row:nth-child(even) {
+  flex-direction: row-reverse;
+}
+
+.project-row:hover {
+  transform: translateY(-8px);
+  border-color: rgba(255, 255, 255, 0.15);
+  box-shadow: 0 20px 40px -10px rgba(0, 0, 0, 0.3);
+}
+
+/* --- IMAGE SIDE (Fixed Fitting) --- */
+.row-image {
+  flex: 1;
+  position: relative;
+  height: 350px;
+  border-radius: 20px;
+  overflow: hidden;
+  background: #1a1a1a00;
+  min-width: 300px; 
+  
+  /* Force frame border */
+  border: 1px solid rgba(255,255,255,0.05);
+}
+
+.row-image img {
+  /* 1. Size: Fill the box exactly */
+  width: 100%; 
+  height: 100%;
+  
+  /* 2. Fit: Default should be COVER (fill the box) */
+  /* Your inline React code will override this if fit="contain" is set */
+  object-fit: cover; 
+  
+  transition: transform 0.5s ease;
+}
+
+.row-image img.img-contain {
+  object-fit: contain !important; /* Forces the whole image to show */
+  padding: 20px; /* Adds breathing room so it doesn't touch edges */
+  background: transparent;
+}
+
+.project-row:hover .row-image img, .row-image longimg {
+  transform: scale(1.02);
+}
+
+/* --- CONTENT SIDE --- */
+.row-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  padding: 1rem;
+}
+
+.category {
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--accent);
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+  display: block;
+}
+
+.row-content h3 {
+  font-size: 2rem;
+  line-height: 1.1;
+  margin: 0;
+}
+
+.row-content p {
+  font-size: 1.05rem;
+  color: var(--text-secondary);
+  line-height: 1.7;
+}
+
+.card-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.tag {
+  font-size: 0.85rem;
+  padding: 6px 14px;
+  border-radius: 99px;
+  background: rgba(255, 255, 255, 0.05);
+  color: var(--text-secondary);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+/* --- HOVER OVERLAY BUTTON --- */
+.overlay {
+  position: absolute;
+  inset: 0;
+  
+  /* Transparent background so we see the image clearly */
+  background: transparent; 
+  
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  z-index: 5;
+}
+
+.view-text {
+  background: white;
+  color: black;
+  padding: 12px 24px;
+  border-radius: 99px;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  
+  box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+  
+  transform: translateY(20px);
+  transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.project-row:hover .overlay { opacity: 1; }
+.project-row:hover .view-text { transform: translateY(0); }
+
+/* --- CTA SECTION --- */
+.works-cta {
+  text-align: center;
+  margin: 6rem auto 2rem;
+  padding: 4rem 2rem;
+  max-width: 800px;
+  border-radius: 24px;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.03) 0%, rgba(255, 255, 255, 0) 100%);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.works-cta h2 { font-size: 2rem; margin-bottom: 1rem; }
+.works-cta p { color: var(--text-secondary); margin-bottom: 2rem; }
+.btn-primary {
+  display: inline-block;
+  background: #ffffff;
+  color: #000000;
+  padding: 12px 32px;
+  border-radius: 99px;
+  font-weight: 600;
+  text-decoration: none;
+  transition: transform 0.2s ease;
+}
+.btn-primary:hover { transform: translateY(-2px); }
+
+/* =========================================
+   LIGHT MODE OVERRIDES (The Glass Fix)
+   ========================================= */
+[data-theme="light"] .works-hero::before {
+  background: radial-gradient(
+    50% 50% at 50% 50%, 
+    rgba(37, 99, 235, 0.15) 0%, 
+    transparent 100%
+  );
+  opacity: 1;
+}
+
+/* CARD FIX: Use variables for consistent glass look */
+[data-theme="light"] .project-row {
+  background: var(--glass-bg);
+  border: var(--glass-border);
+  box-shadow: var(--glass-shadow);
+  backdrop-filter: blur(var(--glass-blur));
+  color: #000;
+}
+
+[data-theme="light"] .project-row:hover {
+  box-shadow: 0 20px 50px rgba(0,0,0,0.1);
+  transform: translateY(-8px);
+}
+
+[data-theme="light"] .row-image {
+  border-color: rgba(0,0,0,0.08);
+}
+
+[data-theme="light"] .project-row p,
+[data-theme="light"] .tag {
+  color: #555;
+}
+
+[data-theme="light"] .tag {
+  background: rgba(0,0,0,0.05);
+  border-color: rgba(0,0,0,0.05);
+}
+
+[data-theme="light"] .works-cta { 
+  background: #ffffff; 
+  border-color: rgba(0,0,0,0.1);
+}
+[data-theme="light"] .works-cta h2 { color: #000; }
+[data-theme="light"] .btn-primary { background: #000; color: #fff; }
+
+/* =========================================
+   RESPONSIVE (MOBILE & TABLET)
+   ========================================= */
+
+@media (max-width: 960px) {
+  
+  /* 1. Reset Zig-Zag to Vertical Stack */
+  .project-row,
+  .project-row:nth-child(even) {
+    flex-direction: column; /* Forces layout to stack Image -> Text */
+    align-items: flex-start;
+    gap: 1.5rem; /* Reduced gap */
+    padding: 1.5rem;
+  }
+  
+  /* 2. Hero Adjustments */
+  .works-hero {
+    margin-bottom: 3rem;
+  }
+  
+  .works-title {
+    font-size: 2.5rem;
+  }
+  
+  .works-intro {
+    font-size: 1rem;
+  }
+  
+  /* 3. Image Sizing */
+  .row-image {
+    width: 100%; /* Full width */
+    height: 220px; /* Shorter height for mobile */
+    min-width: 0; /* Prevents flexbox overflow issues */
+  }
+
+  /* 4. Content Sizing */
+  .row-content {
+    width: 100%;
+    padding: 0;
+    gap: 1rem;
+  }
+  
+  .row-content h3 {
+    font-size: 1.75rem;
+  }
+  
+  .row-content p {
+    font-size: 1rem;
+  }
+  
+  /* 5. CTA Section */
+  .works-cta {
+    margin: 4rem 1rem 2rem;
+    padding: 3rem 1.5rem;
+  }
+}
+
+@media (max-width: 480px) {
+  /* Extra tweaks for small phones */
+  .works {
+    padding-bottom: 2rem;
+  }
+  
+  .works-title {
+    font-size: 2rem;
+  }
+  
+  .project-row {
+    padding: 1.25rem;
+    border-radius: 24px;
+  }
+  
+  .row-image {
+    height: 180px; /* Even shorter for small screens */
+  }
+  
+  .tag {
+    font-size: 0.75rem;
+    padding: 4px 10px;
+  }
+}

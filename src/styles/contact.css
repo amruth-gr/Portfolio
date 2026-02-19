@@ -1,0 +1,365 @@
+/* =========================================
+   CONTACT PAGE STYLES (Final Polish)
+   ========================================= */
+.contact {
+  /* padding: 6rem 2rem;
+  overflow-x: hidden; */
+  width: 100%;
+  align-items: center;
+  padding: 6rem 2rem;
+  width: 100%;
+  max-width: 100%;
+  position: relative;
+}
+
+/* --- HERO SECTION --- */
+.contact-hero {
+  position: relative;
+  max-width: 100%;
+  margin-bottom: 4rem;
+  z-index: 1;
+}
+
+/* THE GLOW (Exactly matches About Page) */
+.contact-hero::before {
+  content: "";
+  position: absolute;
+  
+  /* CRITICAL FIX: -20% aligns perfectly with the text */
+  top: -20%; 
+  left: 50%;
+  transform: translateX(-50%);
+  
+  width: 800px;
+  height: 500px;
+  
+  /* The Royal Blue Gradient */
+  background: radial-gradient(
+    50% 50% at 50% 50%, 
+    rgba(37, 99, 235, 0.25) 0%, 
+    transparent 100%
+  );
+  
+  filter: blur(100px);
+  z-index: -1;
+  pointer-events: none;
+}
+
+.contact-title {
+  font-size: clamp(2.4rem, 4vw, 3.5rem);
+  line-height: 1.1;
+  margin: 1.5rem 0 1.5rem;
+}
+
+.contact-intro {
+  font-size: 1.1rem;
+  line-height: 1.7;
+  /* Increased width prevents awkward text breaking */
+  
+  color: var(--text-secondary);
+}
+
+/* --- GRID LAYOUT --- */
+/* Update the .contact-grid class only */
+.contact-grid {
+  display: grid;
+  
+  /* LEFT (Info) gets 1 unit, RIGHT (Form) gets 1.5 units */
+  grid-template-columns: 1fr 1.5fr; 
+  
+  gap: 3rem;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+/* --- FORM STYLES (Left Side) --- */
+.contact-form {
+  padding: 2.5rem;
+  border-radius: 24px;
+  background: rgba(255, 255, 255, 0.02);
+  border: var(--glass-border);
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.form-group label {
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: var(--text-primary);
+}
+
+.form-note {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 16px;
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid transparent;
+  color: var(--text-primary);
+  text-decoration: none;
+  transition: all 0.2s;
+}
+
+.contact-form input,
+.contact-form textarea {
+  width: 100%;
+  padding: 14px 18px;
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: var(--text-primary);
+  font-size: 1rem;
+  font-family: inherit;
+  outline: none;
+  transition: all 0.2s ease;
+}
+
+.contact-form textarea {
+  resize: vertical;
+}
+
+.contact-form input:focus,
+.contact-form textarea:focus {
+  background: rgba(255, 255, 255, 0.05);
+  border-color: var(--accent);
+  box-shadow: 0 0 0 4px rgba(37, 99, 235, 0.1);
+}
+
+.btn-submit {
+  margin-top: 1rem;
+  padding: 14px;
+  border-radius: 12px;
+  background: var(--accent);
+  color: var(--text-primary);
+  font-weight: 600;
+  font-size: 1rem;
+  justify-self: center;
+  border: none;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.btn-submit:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 15px rgba(255, 255, 255, 0.2);
+}
+
+/* --- INFO CARDS STYLES (Right Side) --- */
+.contact-info {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.info-card {
+  padding: 1.5rem;
+  border-radius: 20px;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.info-card h3 {
+  font-size: 0.9rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--text-secondary);
+  margin-bottom: 1rem;
+}
+
+.email-wrapper, .location-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 1.1rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: opacity 0.2s;
+}
+
+.email-wrapper:hover {
+  opacity: 0.8;
+}
+
+.copy-icon {
+  margin-left: auto;
+  opacity: 0.5;
+}
+
+.copy-icon.success {
+  color: #4ade80;
+  opacity: 1;
+}
+
+/* SOCIAL LINKS */
+.social-links {
+  margin-top: 1rem;
+}
+
+.social-links h3 {
+  font-size: 0.9rem;
+  text-transform: uppercase;
+  color: var(--text-secondary);
+  margin-bottom: 1rem;
+}
+
+.social-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.social-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 16px;
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid transparent;
+  color: var(--text-primary);
+  text-decoration: none;
+  transition: all 0.2s;
+}
+
+.social-item:hover {
+  background: rgba(255, 255, 255, 0.08);
+  border-color: rgba(255, 255, 255, 0.1);
+  transform: translateX(4px);
+}
+
+/* =========================================
+   RESPONSIVE
+   ========================================= */
+@media (max-width: 900px) {
+  .contact-grid {
+    grid-template-columns: 1fr;
+  }
+  .contact-form {
+    padding: 1.5rem;
+  }
+}
+
+/* =========================================
+   LIGHT MODE OVERRIDES (Premium Glass)
+   ========================================= */
+
+/* 1. Correct Glow for Light Mode (Matches About Page) */
+[data-theme="light"] .contact-hero::before {
+  background: radial-gradient(
+    50% 50% at 50% 50%, 
+    rgba(37, 99, 235, 0.15) 0%, 
+    transparent 100%
+  );
+  opacity: 1;
+}
+
+/* 2. Premium Frosted Glass Cards */
+[data-theme="light"] .contact-form {
+  background: rgba(255, 255, 255, 0.65); /* Translucent */
+  backdrop-filter: blur(20px); /* The Blur Magic */
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.8);
+  color: #000;
+}
+
+[data-theme="light"] .social-item{
+    background: #f4f4f4;
+}
+[data-theme="light"] .info-card {
+    border: var(--glass-border);
+    box-shadow: var(--glass-shadow);
+}
+
+/* 3. Inputs Cutout Effect */
+[data-theme="light"] .contact-form input,
+[data-theme="light"] .contact-form textarea {
+  background: rgba(0, 0, 0, 0.04); 
+  border: 1px solid rgba(0, 0, 0, 0.05);
+  color: #000;
+}
+
+[data-theme="light"] .contact-form input:focus,
+[data-theme="light"] .contact-form textarea:focus {
+  background: #ffffff;
+  border-color: var(--accent);
+  box-shadow: 0 0 0 4px rgba(37, 99, 235, 0.15);
+}
+
+/* 4. Social Hover */
+[data-theme="light"] .social-item:hover {
+  background: #ffffff;
+  border-color: rgba(0, 0, 0, 0.1);
+  transform: translateX(4px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+}
+
+/* 5. Submit Button */
+[data-theme="light"] .btn-submit {
+  background: #000000;
+  color: #ffffff;
+  box-shadow: 0 4px 14px rgba(0,0,0,0.15);
+}
+
+[data-theme="light"] .contact-form {
+    border: var(--glass-border);
+    box-shadow: var(--glass-shadow);
+}
+
+/* =========================================
+   MOBILE RESPONSIVE STYLES
+   ========================================= */
+
+@media (max-width: 900px) {
+  
+  .contact {
+    padding: 4rem 1.5rem; /* Less padding on mobile */
+  }
+
+  .contact-grid {
+    grid-template-columns: 1fr; /* Stack into 1 column */
+    gap: 3rem;
+  }
+
+  /* Optional: Make Info appear above Form on mobile */
+  /* .contact-info { order: -1; } */
+
+  .contact-form {
+    padding: 1.5rem; /* Compact padding for form */
+  }
+
+  .contact-title {
+    font-size: 2.5rem; /* Smaller title */
+  }
+
+  /* Reduce glow size on mobile to prevent overflow */
+  .contact-hero::before {
+    width: 100%; 
+    height: 300px;
+  }
+}
+
+@media (max-width: 480px) {
+  .contact {
+    padding: 3rem 1.25rem;
+  }
+  
+  .contact-title {
+    font-size: 2rem;
+  }
+  
+  .contact-form {
+    padding: 1.25rem;
+  }
+  
+  .btn-submit {
+    width: 100%; /* Full width button on small phones */
+  }
+}

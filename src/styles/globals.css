@@ -1,0 +1,214 @@
+/* ===============================
+   CSS RESET (SAFE + MODERN)
+================================ */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden; /* Prevents horizontal scrollbar */
+  width: 100%;
+}
+
+body {
+  font-family: "Times new roman", system-ui, -apple-system, BlinkMacSystemFont,
+    "Segoe UI", Roboto, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  line-height: 1.5;
+}
+
+.container {
+  width: 100%; /* Ensure it takes full width */
+  margin: 0 auto; /* Center it */
+  max-width: 1600px;
+  padding: 0 2rem; /* Give it breathing room on edges */
+}
+
+/* Mobile Container Tweak */
+@media (max-width: 768px) {
+  .container {
+    padding: 0 1.5rem; /* Mobile: Slightly less padding for more space */
+  }
+}
+
+@media (max-width: 480px) {
+  .container {
+    padding: 0 1.25rem; /* Small Phone */
+  }
+}
+
+/* ===============================
+   THEME TOKENS
+   Default = DARK
+================================ */
+
+:root {
+  /* Base */
+  --bg: #0b0e14;
+  --surface: rgba(255, 255, 255, 0.04);
+  --surface-strong: rgba(255, 255, 255, 0.08);
+
+  /* Text */
+  --text-primary: #f5f7fa;
+  --text-secondary: #a7adbe;
+
+  /* Accent */
+  --accent: #2563EB;
+
+  /* Glass system */
+  --glass-bg: rgba(255, 255, 255, 0.06);
+  --glass-border: 1px solid rgba(255, 255, 255, 0.15);
+  --glass-blur: 14px;
+  --glass-shadow: inset 0 -2px 2px rgba(255, 255, 255, 0.4),
+    inset 0 -2px 6px rgba(0, 0, 0, 0.45);
+ 
+
+  /* Glow */
+  --glow-primary: 0 0 120px rgba(91, 124, 250, 0.35);
+
+  /* Radius */
+  --radius-lg: 24px;
+  --radius-pill: 999px;
+}
+
+/* ===============================
+   LIGHT THEME
+================================ */
+
+[data-theme="light"] {
+  --bg: #f6f7fb00;
+  --surface: rgba(255, 255, 255, 0.7);
+  --surface-strong: rgba(255, 255, 255, 0.9);
+
+  --text-primary: #0b0e14;
+  --text-secondary: #5a6172;
+
+  --accent: #2563EB;
+
+  --glass-bg: rgba(255, 255, 255, 0);
+  --glass-border: 1px solid rgba(0, 0, 0, 0.1);
+  --glass-blur: 18px;
+  --glass-shadow: inset 0 -2px 2px rgba(144, 143, 143, 0.854),
+    inset 0 -2px 6px rgba(249, 249, 249, 0.45);
+  --glass-rim: inset 0 1px 1px rgba(255, 255, 255, 0.8);
+  --glow-primary: 0 0 120px rgba(79, 108, 255, 0.25);
+}
+
+/* ===============================
+   BASE LAYOUT
+================================ */
+
+body {
+  background: var(--bg);
+  color: var(--text-primary);
+}
+
+/* ===============================
+   GLASS UTILITY
+================================ */
+
+.glass {
+  background: var(--glass-bg);
+  backdrop-filter: blur(var(--glass-blur));
+  -webkit-backdrop-filter: blur(var(--glass-blur));
+  border: var(--glass-border);
+  box-shadow: var(--glass-shadow);
+}
+
+/* Buttons */
+.button-primary {
+  background-color: var(--accent);
+  color: white;
+  font-size: 16px;
+  font-weight: 600;
+  height: fit-content;
+  border-radius: 99px;
+  border: 3px solid var(--accent);
+  text-decoration: none;
+  padding: 0.6rem 1.5rem;
+  transition: all 0.3s;
+  box-shadow:
+    0 8px 20px rgba(var(--accent), 0.25);
+}
+
+.button-primary:hover {
+  box-shadow: 0 10px 40px rgba(27, 95, 222, 0.18);
+  transform: translateY(-2px);
+}
+
+.button-secondary {
+  background-color: transparent;
+  color: var(--accent);
+  font-weight: 800;
+  border: 3px solid var(--accent);
+  padding: 0.6rem 1.5rem;
+  height: fit-content;
+  border-radius: 99px;
+  text-decoration: none;
+  transition: all 0.3s;
+}
+
+.button-secondary:hover {
+  /* background-color: var(--accent); */
+  box-shadow: 0 10px 40px rgba(27, 95, 222, 0.18);
+  /* color: white; */
+  transform: translateY(-2px);
+}
+
+/* ===============================
+   BADGE
+================================ */
+
+.badge {
+  display: inline-block;
+  padding: 6px 14px;
+  margin-bottom: 20px;
+  border-radius: var(--radius-pill);
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  color: var(--text-primary);
+  border: var(--glass-border);
+  box-shadow: var(--glass-shadow);
+}
+
+/* LIGHT MODE BADGE FIX */
+[data-theme="light"] .badge {
+  /* 1. Remove the gray background */
+  background: #fff; 
+  
+  /* 2. Make the border slightly darker so it's visible on white */
+  border: var(--glass-border); 
+  
+  /* 3. Ensure text is black */
+  color: var(--text-primary);
+  
+  /* Optional: Remove shadow if you want it perfectly flat */
+  box-shadow: var(--glass-shadow);
+}
+
+/* ===============================
+   LINKS
+================================ */
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+/* ===============================
+   IMAGE SAFETY
+================================ */
+
+img {
+  max-width: 100%;
+  display: block;
+}

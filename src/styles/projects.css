@@ -1,0 +1,417 @@
+/* =========================================
+   CASE STUDY PAGE STYLES
+   ========================================= */
+.project-page {
+  padding: 6rem 2rem;
+  overflow-x: hidden;
+}
+
+/* --- NAVIGATION --- */
+.nav-container {
+  margin-bottom: 4rem;
+}
+
+.back-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--text-secondary);
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.2s;
+}
+
+.back-link:hover {
+  color: var(--text-primary);
+  transform: translateX(-4px);
+}
+
+/* --- HERO HEADER --- */
+.project-hero {
+  position: relative;
+  text-align: center;
+  margin-bottom: 3rem;
+  z-index: 1;
+}
+
+.project-hero::before {
+  content: "";
+  position: absolute;
+  top: -50%; 
+  left: 50%;
+  transform: translateX(-50%);
+  width: 600px;
+  height: 400px;
+  background: radial-gradient(
+    50% 50% at 50% 50%, 
+    rgba(37, 99, 235, 0.25) 0%, 
+    transparent 100%
+  );
+  filter: blur(80px);
+  z-index: -1;
+  pointer-events: none;
+}
+
+/* LIGHT MODE GLOW FIX */
+[data-theme="light"] .project-hero::before {
+  background: radial-gradient(
+    50% 50% at 50% 50%, 
+    rgba(37, 99, 235, 0.15) 0%, 
+    transparent 100%
+  );
+}
+
+.project-title {
+  font-size: clamp(2.5rem, 5vw, 4rem);
+  line-height: 1.1;
+  margin: 1.5rem 0;
+  color: var(--text-primary);
+}
+
+.project-subtitle {
+  font-size: 1.2rem;
+  color: var(--text-secondary);
+  width: 100%;
+  margin: 0 auto 3rem;
+  line-height: 1.6;
+}
+
+/* --- META DATA GRID --- */
+.project-meta {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 2rem;
+  padding: 2rem;
+  border-radius: 20px;
+  max-width: 900px;
+  margin: 0 auto;
+
+  /* USE GLOBAL VARIABLES FOR GLASS EFFECT */
+  background: var(--glass-bg);
+  border: var(--glass-border);
+  box-shadow: var(--glass-shadow);
+  backdrop-filter: blur(var(--glass-blur));
+  -webkit-backdrop-filter: blur(var(--glass-blur));
+}
+
+.meta-item h3 {
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  color: var(--text-secondary);
+  margin-bottom: 0.5rem;
+  letter-spacing: 0.05em;
+}
+
+.meta-item p {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.live-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  color: var(--accent);
+  text-decoration: none;
+  font-weight: 600;
+}
+
+/* --- HERO IMAGE --- */
+.hero-image-container {
+  margin-bottom: 6rem;
+  max-width: 90%;
+  width: 60%;
+  min-height: 200px;
+}
+
+.main-image {
+  width: 100%;
+  border-radius: 24px;
+  object-fit: contain;
+  /* Use glass border for consistency */
+  border: var(--glass-border); 
+  box-shadow: 0 20px 60px -10px rgba(0, 0, 0, 0.5); 
+}
+
+/* LIGHT MODE SHADOW ADJUSTMENT */
+[data-theme="light"] .main-image {
+  box-shadow: 0 20px 60px -10px rgba(0, 0, 0, 0.15);
+}
+
+/* =========================================
+   GLASS PANEL (Wrapper for Sections)
+   ========================================= */
+.glass-panel {
+  /* USE GLOBAL VARIABLES - AUTOMATICALLY ADAPTS TO LIGHT/DARK */
+  background: var(--glass-bg);
+  box-shadow: var(--glass-shadow);
+  border: var(--glass-border);
+  backdrop-filter: blur(var(--glass-blur));
+  -webkit-backdrop-filter: blur(var(--glass-blur));
+  
+  border-radius: 24px;
+  padding: 3rem;
+  transition: transform 0.3s ease, border-color 0.3s ease;
+}
+
+/* --- CONTENT SECTIONS --- */
+.project-section {
+  margin-bottom: 4rem;
+}
+
+.section-grid {
+  display: grid;
+  grid-template-columns: 250px 1fr;
+  gap: 3rem;
+}
+
+.section-left h2 {
+  font-size: 1.8rem;
+  color: var(--text-primary);
+}
+
+.section-right p {
+  font-size: 1.15rem;
+  line-height: 1.8;
+  color: var(--text-secondary);
+  margin-bottom: 1.5rem;
+}
+
+.section-right strong {
+  color: var(--text-primary);
+}
+
+.section-right p:last-child {
+  margin-bottom: 0;
+}
+
+/* Bullet list */
+.bullet-list {
+  padding-left: 1.2rem;
+  color: var(--text-secondary);
+  font-size: 1.1rem;
+  line-height: 1.8;
+}
+
+/* --- EMBED HEADER FIX --- */
+.embed-header {
+  margin-bottom: 2rem;
+}
+
+.embed-container {
+  padding: 2rem;
+  border-radius: 24px;
+  
+  /* USE GLOBAL VARIABLES */
+  background: var(--glass-bg);
+  border: var(--glass-border);
+  box-shadow: var(--glass-shadow);
+}
+
+.iframe-wrapper {
+  width: 100%;
+  overflow: hidden;
+  border-radius: 12px;
+  background: #000; /* Keep iframe bg dark to blend with figma */
+}
+
+/* --- IMAGE GRID --- */
+.image-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+  margin-top: 2rem;
+}
+
+.image-grid img {
+  width: 100%;
+  border-radius: 24px;
+  border: var(--glass-border);
+  /* Make images pop */
+  background: rgba(0,0,0,0.05); 
+}
+
+/* --- SHOWCASE GRID (Replaces Embed) --- */
+.showcase-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2rem;
+}
+
+.showcase-item {
+  border-radius: 16px;
+  overflow: hidden;
+  border: var(--glass-border);
+  box-shadow: var(--glass-shadow);
+  transition: transform 0.3s ease;
+}
+
+.showcase-item:hover {
+  transform: translateY(-4px);
+}
+
+.showcase-item img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.prototype-btn {
+  margin-top: 2rem;
+  background: var(--accent);
+  color: white;
+  border: none;
+}
+
+.prototype-btn:hover {
+  background: white;
+  color: black;
+}
+/* LIGHT MODE BUTTON FIX */
+[data-theme="light"] .prototype-btn:hover {
+  background: #000;
+  color: white;
+}
+
+/* --- SWIPER SLIDESHOW STYLES --- */
+.slideshow-wrapper {
+  /* 1. REDUCED WIDTH (Adjust percentage as needed) */
+  width: 50%;
+  max-width: 900px; /* Optional: Stops it from getting too huge on big screens */
+  
+  /* 2. CENTER THE CONTAINER */
+  margin: 0 auto; 
+  
+  border-radius: 16px;
+  overflow: hidden;
+  border: var(--glass-border);
+  box-shadow: var(--glass-shadow);
+}
+
+/* The Slide Image */
+.slide-image-container {
+  width: 100%;
+  
+  /* 3. REDUCED HEIGHT (Adjust pixels as needed) */
+  height: 400px; 
+  
+  background: #1a1a1a;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 16px; /* Match wrapper radius */
+}
+
+.slide-image-container img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* Ensures image fits inside without cropping */
+}
+
+/* --- RESPONSIVE FIX (Mobile) --- */
+@media (max-width: 768px) {
+  .slideshow-wrapper {
+    width: 100%; /* Full width on mobile */
+  }
+  
+  .slide-image-container {
+    height: 250px; /* Even shorter on mobile */
+  }
+}
+
+/* Swiper Navigation Arrows */
+.swiper-button-next,
+.swiper-button-prev {
+  color: #ffffff71 !important;
+  background: rgba(0, 0, 0, 0.055);
+  padding: 4px;
+  width: 30px !important;
+  height: 30px !important;
+  border-radius: 50%;
+  backdrop-filter: blur(4px);
+}
+
+.swiper-button-next::after,
+.swiper-button-prev::after {
+  font-size: 18px !important;
+  font-weight: bold;
+}
+
+.swiper-pagination-bullet {
+  background: rgba(255, 255, 255, 0.5) !important;
+}
+
+.swiper-pagination-bullet-active {
+  background: #fff !important;
+}
+
+/* --- NEXT PROJECT CTA --- */
+.next-project {
+  text-align: center;
+  margin-top: 8rem;
+}
+
+.divider {
+  border: 0;
+  height: 1px;
+  background: var(--glass-border); /* Uses border color for divider */
+  margin-bottom: 4rem;
+}
+
+.next-header {
+  font-size: 0.9rem;
+  text-transform: uppercase;
+  color: var(--text-secondary);
+  margin-bottom: 1rem;
+  letter-spacing: 0.1em;
+}
+
+.next-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 1rem;
+  text-decoration: none;
+  color: var(--text-primary);
+  transition: transform 0.2s;
+}
+
+.next-link h2 {
+  font-size: 3rem;
+  margin: 0;
+}
+
+.next-link:hover {
+  transform: translateX(10px);
+  color: var(--accent);
+}
+
+/* =========================================
+   RESPONSIVE
+   ========================================= */
+@media (max-width: 900px) {
+  .glass-panel {
+    padding: 2rem;
+  }
+  
+  .section-grid {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+  
+  .project-meta {
+    grid-template-columns: 1fr 1fr;
+  }
+  
+  .image-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .next-link h2 {
+    font-size: 2rem;
+  }
+
+  .slide-image-container {
+    height: 300px;
+  }
+}

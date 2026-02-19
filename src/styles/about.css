@@ -1,0 +1,426 @@
+/* =========================================
+   ABOUT PAGE - MAIN STYLES
+   ========================================= */
+.about {
+  padding: 4rem 2rem;
+  overflow-x: hidden;
+}
+
+/* --- HERO SECTION --- */
+.about-hero {
+  position: relative;
+  max-width: 100%;
+  z-index: 1;
+  margin-bottom: 4rem; 
+}
+
+/* The Ambient Glow (Background) */
+.about-hero::before {
+  content: "";
+  position: absolute;
+  top: -20%; 
+  left: 50%;
+  transform: translateX(-50%);
+  width: 800px;
+  height: 500px;
+  
+  background: radial-gradient(
+    50% 50% at 50% 50%, 
+    rgba(37, 99, 235, 0.25) 0%, 
+    transparent 100%
+  );
+  
+  filter: blur(100px);
+  z-index: -1;
+  pointer-events: none;
+}
+
+.about-hero .badge {
+  margin-bottom: 1.25rem;
+}
+
+.about-title {
+  font-size: clamp(2.4rem, 4vw, 3.2rem);
+  line-height: 1.15;
+  margin: 1.5rem 0 2rem;
+}
+
+.about-intro {
+  font-size: 1.05rem;
+  line-height: 1.7;
+  max-width: 1400px;
+  color: var(--text-secondary);
+}
+
+/* Principles */
+.about-principles {
+  margin-top: 6rem;
+}
+
+.principles-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
+}
+
+/* --- PRINCIPLE CARD (The Glass Fix) --- */
+.principle-card {
+  padding: 2rem;
+  border-radius: 24px;
+  
+  /* Use CSS Variables so it adapts to Light/Dark automatically */
+  background: var(--glass-bg); 
+  border: var(--glass-border);
+  box-shadow: var(--glass-shadow);
+  backdrop-filter: blur(var(--glass-blur));
+  
+  text-align: center;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.principle-card:hover {
+  transform: translateY(-5px);
+  border: var(--glass-border);
+  /* box-shadow: 0 20px 40px rgba(0,0,0,0.1); */
+}
+
+.principle-card h3 {
+  margin-bottom: 0.75rem;
+  font-weight: 700;
+  font-size: 26px;
+  color: var(--text-primary);
+}
+
+.principle-card p {
+  color: var(--text-secondary);
+  line-height: 1.6;
+}
+
+/* =========================================
+   EXPERIENCE & TOOLS (Marquee Section)
+   ========================================= */
+.experience {
+  text-align: center;
+  max-width: 100%;
+  margin: 0 auto;
+  padding: 6rem 0;
+}
+
+.experience .section-title {
+  margin-bottom: 1rem;
+}
+
+.experience p {
+  max-width: 600px;
+  margin: 0 auto 1rem auto;
+  color: var(--text-secondary);
+  font-size: 1.1rem;
+}
+
+/* --- INFINITE SCROLL CONTAINER --- */
+.marquee-container {
+
+  position: relative;
+
+  width: 100%;
+
+  max-width: 1100px;
+
+  margin: 4rem auto 0;
+
+  overflow: hidden;
+
+  padding: 40px 0;
+
+ 
+
+  mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
+
+  -webkit-mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
+
+}
+
+
+
+.marquee-track {
+
+  display: flex;
+
+  gap: 32px;
+
+  width: max-content;
+
+  animation: scroll 40s linear infinite;
+
+}
+
+
+
+.marquee-track:hover {
+
+  animation-play-state: paused;
+
+}
+
+
+
+@keyframes scroll {
+
+  0% { transform: translateX(0); }
+
+  100% { transform: translateX(-50%); }
+
+}
+
+/* --- TOOL ITEM (The Tab) --- */
+.tool-item {
+
+  display: inline-flex;
+
+  align-items: center;
+
+  gap: 12px;
+
+  padding: 14px 28px;
+
+  border-radius: 100px;
+
+  font-size: 16px;
+
+  font-weight: 600;
+
+  white-space: nowrap;
+
+  cursor: pointer;
+
+  transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+
+ 
+
+  /* No Background, Subtle Border */
+
+  background: transparent;
+
+  border: 1px solid rgba(255, 255, 255, 0.1);
+
+  color: var(--text-secondary);
+
+}
+
+
+
+.tool-item .tool-icon {
+
+  display: flex;
+
+  align-items: center;
+
+  font-size: 22px;
+
+  color: var(--brand-color);
+
+  filter: drop-shadow(0 0 5px rgba(0,0,0,0.2));
+
+}
+
+
+
+[data-theme="dark"] .tool-item .tool-icon {
+
+  filter: brightness(1.2);
+
+}
+
+
+
+/* Hover Effects */
+
+.tool-item:hover {
+
+  transform: translateY(-5px);
+
+  background: rgba(255, 255, 255, 0.05);
+
+  border-color: var(--brand-color);
+
+  box-shadow: 0 10px 25px -5px var(--brand-color);
+
+  color: #ffffff;
+
+}
+
+/* =========================================
+   CALL TO ACTION
+   ========================================= */
+.about-cta {
+  text-align: center;
+  margin: 0rem auto 2rem;
+  padding: 4rem 2rem;
+  max-width: 800px;
+  border-radius: 24px;
+  
+  /* Glass Gradient */
+  background: var(--glass-bg);
+  box-shadow: var(--glass-shadow);
+  border: var(--glass-border);
+  backdrop-filter: blur(var(--glass-blur));
+}
+
+.about-cta h2 {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+  background: linear-gradient(to bottom, #fff, rgba(255, 255, 255, 0.7));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.about-cta p {
+  color: var(--text-secondary);
+  margin-bottom: 2rem;
+  font-size: 1.1rem;
+}
+
+/* =========================================
+   LIGHT MODE OVERRIDES (FIXED)
+   ========================================= */
+
+/* Hero Glow Tweak */
+[data-theme="light"] .about-hero::before {
+  background: radial-gradient(
+    50% 50% at 50% 50%, 
+    rgba(37, 99, 235, 0.15) 0%, 
+    transparent 100%
+  );
+}
+
+/* Badge Fix */
+[data-theme="light"] .badge {
+  background: transparent;
+  color: #000;
+  border-color: rgba(0,0,0,0.1);
+}
+
+/* THE FIX: Remove explicit 'white' background.
+   Now it uses var(--glass-bg) from globals.css 
+   which is set to rgba(255, 255, 255, 0.65)
+*/
+[data-theme="light"] .principle-card {
+  /* No background: #ffffff here! */
+  /* Just let variables do the work */
+}
+
+/* Tools Fix for Light Mode */
+[data-theme="light"] .tool-item {
+  border-color: rgba(0,0,0,0.1);
+  color: #444;
+  background: rgba(255,255,255, 0.5); /* Slight glass background */
+}
+
+[data-theme="light"] .tool-item:hover {
+  background: #ffffff;
+  color: #000;
+  
+  /* 1. Use the brand color for the border */
+  border-color: var(--brand-color);
+
+  box-shadow: 0 10px 25px -5px var(--brand-color);
+}
+
+[data-theme="light"] .about-cta h2 {
+  background: none;
+  -webkit-text-fill-color: initial;
+  color: #000;
+}
+
+/* =========================================
+   RESPONSIVE (MOBILE & TABLET)
+   ========================================= */
+
+@media (max-width: 900px) {
+  /* 1. Container Adjustments */
+  .about {
+    padding: 3rem 1.5rem; /* Tighter padding for mobile */
+  }
+
+  /* 2. Hero Typography */
+  .about-hero {
+    margin-bottom: 3rem;
+    text-align: left; /* Optional: Center text on mobile if you prefer */
+  }
+
+  .about-title {
+    font-size: 2.2rem; /* Smaller title */
+    margin: 1rem 0 1.5rem;
+  }
+
+  .about-intro {
+    font-size: 1rem;
+  }
+  
+  /* 3. Principles Grid (Stacking) */
+  .about-principles {
+    margin-top: 4rem;
+  }
+
+  .principles-grid {
+    grid-template-columns: 1fr; /* Stack cards vertically */
+    gap: 1.5rem;
+  }
+  
+  .principle-card {
+    padding: 1.5rem; /* Less padding inside cards */
+    text-align: left; /* Align text left for better readability on small screens */
+  }
+
+  /* 4. Experience & Marquee */
+  .experience {
+    padding: 4rem 0;
+  }
+
+  .marquee-container {
+    margin-top: 2rem;
+    padding: 20px 0; /* Reduced padding */
+    mask-image: linear-gradient(to right, transparent, black 5%, black 95%, transparent);
+    -webkit-mask-image: linear-gradient(to right, transparent, black 5%, black 95%, transparent);
+  }
+
+  .marquee-track {
+    gap: 16px; 
+    animation-duration: 20s; /* Faster scroll on mobile feels better */
+  }
+
+  .tool-item {
+    padding: 10px 20px; /* Smaller pills */
+    font-size: 14px;
+  }
+
+  /* 5. CTA Section */
+  .about-cta {
+    margin: 3rem auto 1rem;
+    padding: 2.5rem 1.5rem;
+    border-radius: 20px;
+  }
+
+  .about-cta h2 {
+    font-size: 1.75rem;
+    height: fit-content;
+  }
+}
+
+@media (max-width: 480px) {
+  /* Extra tweaks for very small phones */
+  .about {
+    padding: 2.5rem 1.25rem;
+  }
+
+  .about-title {
+    font-size: 1.85rem;
+  }
+
+  /* Prevent horizontal scroll from glow */
+  .about-hero::before {
+    width: 100%; 
+    height: 300px;
+    filter: blur(60px);
+  }
+}
