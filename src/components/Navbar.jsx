@@ -26,7 +26,7 @@ export default function Navbar() {
             Home 
           </NavLink>
           <NavLink to="/projects" onClick={() => setIsOpen(false)} className={({ isActive }) => isActive ? "nav-item active" : "nav-item"}>
-            workss
+            Projects
           </NavLink>
           <NavLink to="/about" onClick={() => setIsOpen(false)} className={({ isActive }) => isActive ? "nav-item active" : "nav-item"}>
             About

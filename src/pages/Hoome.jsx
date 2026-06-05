@@ -27,7 +27,7 @@ export default function Home() {
             </p>
 
             <div className="hero-actions">
-              <Link to="/projects" className="button-primary">View Projects</Link>
+              <Link to="/projects" className="button-primary">View Works</Link>
               <Link to="/contact" className="button-secondary">Get in touch</Link>
             </div>
           </div>
