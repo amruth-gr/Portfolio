@@ -1,5 +1,5 @@
 import { useRef, useState } from "react";
-// import ReCAPTCHA from "react-google-recaptcha";
+import ReCAPTCHA from "react-google-recaptcha"; // 1. Import V2 Component
 import { Mail, MapPin, Linkedin, ArrowUpRight, Copy, Check } from "lucide-react";
 import { db } from "../firebase"; 
 import { setDoc, doc, serverTimestamp } from "firebase/firestore"; 
@@ -11,10 +11,9 @@ import "../styles/globals.css";
 
 export default function Contact() {
   const form = useRef();
-  // const recaptchaRef = useRef();
+  const recaptchaRef = useRef(); // 2. Ref for the Captcha
   const [copied, setCopied] = useState(false);
   const [loading, setLoading] = useState(false);
-  // const [captchaToken, setCaptchaToken] = useState(null); // 3. State for token
 
   const handleCopyEmail = () => {
     navigator.clipboard.writeText("gramrutha1612@gmail.com");
@@ -25,8 +24,15 @@ export default function Contact() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    setLoading(true);
 
+    // 3. Get the Captcha Token
+    const token = recaptchaRef.current.getValue();
+    if (!token) {
+      toast.error("Please complete the reCAPTCHA checkbox");
+      return;
+    }
+
+    setLoading(true);
     const loadingToast = toast.loading("Sending message...");
 
     try {
@@ -38,29 +44,34 @@ export default function Contact() {
       
       const customId = `${name}_${Date.now()}`;
 
-      // 1. DATA OBJECT FOR FIREBASE & EMAILJS
       const data = {
         a_name: name,
         b_email: email,
         c_subject: subject,
         d_message: message,
         e_timestamp: serverTimestamp(),
-        time: new Date().toLocaleString(), // For the email templates
+        time: new Date().toLocaleString(),
       };
 
-      // 2. SAVE TO FIREBASE
+      // 4. SAVE TO FIREBASE
       await setDoc(doc(db, "portfolio_messages", customId), data);
 
-      // 3. SEND TO YOU (Primary Template)
-      await emailjs.sendForm(
+      // 5. SEND TO EMAILJS (send method)
+      // Use 'g-recaptcha-response' so EmailJS verifies the token
+      await emailjs.send(
         import.meta.env.VITE_EMAIL_SERVICE,
-        import.meta.env.VITE_EMAIL_TEMPLATE, // Your main contact template
-        form.current,
+        import.meta.env.VITE_EMAIL_TEMPLATE,
+        {
+          name: name,
+          email: email,
+          subject: subject,
+          message: message,
+          'g-recaptcha-response': token 
+        },
         import.meta.env.VITE_EMAIL_PUBLIC
       );
 
-      // 4. SEND TO SENDER (Auto-Reply Template)
-      // Make sure to add VITE_EMAIL_AUTO_REPLY_TEMPLATE to your .env file
+      // 6. SEND AUTO-REPLY (Optional)
       if (import.meta.env.VITE_EMAIL_AUTO_REPLY_TEMPLATE) {
         await emailjs.send(
           import.meta.env.VITE_EMAIL_SERVICE,
@@ -70,7 +81,7 @@ export default function Contact() {
             email: email,
             subject: subject,
             message: message,
-            time: data.time
+            'g-recaptcha-response': token
           },
           import.meta.env.VITE_EMAIL_PUBLIC
         );
@@ -78,7 +89,10 @@ export default function Contact() {
 
       toast.dismiss(loadingToast);
       toast.success("Message sent successfully! 🚀");
+      
+      // Reset form and captcha
       e.target.reset();
+      recaptchaRef.current.reset();
 
     } catch (error) {
       console.error("Error:", error);
@@ -152,6 +166,15 @@ export default function Contact() {
             <div className="form-group">
               <label htmlFor="message">Message <span style={{color:"red"}}>*</span></label>
               <textarea id="message" name="message" rows="5" placeholder="Tell me about your project..." required></textarea>
+            </div>
+
+            {/* 7. RECAPTCHA CHECKBOX */}
+            <div style={{ marginBottom: "20px", display: "flex", justifyContent: "center" }}>
+              <ReCAPTCHA
+                ref={recaptchaRef}
+                sitekey={import.meta.env.VITE_RECAPTCHA_SITE_KEY}
+                theme="light" 
+              />
             </div>
 
             <div className="form-actions">

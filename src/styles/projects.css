@@ -213,7 +213,7 @@
   width: 100%;
   overflow: hidden;
   border-radius: 12px;
-  background: #000; /* Keep iframe bg dark to blend with figma */
+  background: none; /* Keep iframe bg dark to blend with figma */
 }
 
 /* --- IMAGE GRID --- */
@@ -309,17 +309,6 @@
   object-fit: cover; /* Ensures image fits inside without cropping */
 }
 
-/* --- RESPONSIVE FIX (Mobile) --- */
-@media (max-width: 768px) {
-  .slideshow-wrapper {
-    width: 100%; /* Full width on mobile */
-  }
-  
-  .slide-image-container {
-    height: 250px; /* Even shorter on mobile */
-  }
-}
-
 /* Swiper Navigation Arrows */
 .swiper-button-next,
 .swiper-button-prev {
@@ -387,31 +376,143 @@
 }
 
 /* =========================================
-   RESPONSIVE
+   PROJECT PAGE (CASE STUDY) MOBILE RESPONSIVE
    ========================================= */
+
 @media (max-width: 900px) {
-  .glass-panel {
-    padding: 2rem;
+  /* 1. Page Shell Adjustments */
+  .project-page {
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+    padding-top: 2rem;
   }
-  
-  .section-grid {
-    grid-template-columns: 1fr;
-    gap: 1.5rem;
+
+  /* 2. Hero Section */
+  .project-hero {
+    margin-bottom: 2rem;
+    text-align: center;
   }
-  
+
+  .project-hero::before {
+    width: 250px !important;
+    height: 250px !important;
+    filter: blur(50px) !important;
+  }
+
+  .project-title {
+    font-size: 2.2rem;
+  }
+
+  .project-subtitle {
+    font-size: 1rem;
+    margin-bottom: 2rem;
+  }
+
+  /* 3. Meta Grid (2 Columns for Tablet/Mobile) */
   .project-meta {
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+    padding: 1.5rem;
+    width: 100%;
   }
-  
-  .image-grid {
-    grid-template-columns: 1fr;
+
+  /* 4. Hero Image */
+  .hero-image-container {
+    width: 100% !important;
+    max-width: 100% !important;
+    margin-bottom: 3rem;
   }
-  
-  .next-link h2 {
-    font-size: 2rem;
+
+  /* 5. Glass Content Panels */
+  .glass-panel {
+    padding: 2rem 1.25rem;
+    border-radius: 24px;
+    width: 100%;
+  }
+
+  .section-grid {
+    grid-template-columns: 1fr; /* Stack layout */
+    gap: 1rem;
+  }
+
+  /* 6. SLIDESHOW (The Content-Fit Fix) */
+  .slideshow-wrapper {
+    width: 100% !important;
+    max-width: 100% !important;
+    background: transparent !important; /* Remove black background */
+    border: none !important;
+    box-shadow: none !important;
   }
 
   .slide-image-container {
-    height: 300px;
+    height: auto !important; /* Let content dictate height */
+    aspect-ratio: auto !important;
+    background: transparent !important; /* Kill the black bars */
+    padding: 0 !important;
+  }
+
+  .slide-image-container img {
+    width: 100% !important;
+    height: auto !important; /* Image determines height */
+    object-fit: contain !important; /* Ensure full image visibility */
+    display: block;
+    border-radius: 12px;
+  }
+
+  /* 7. FIGMA EMBED (Mobile Specific Height) */
+  .embed-container {
+    padding: 0 !important;
+    background: transparent !important;
+    border: none !important;
+  }
+
+  .iframe-wrapper {
+    height: auto !important;
+    border-radius: 12px;
+  }
+
+  .iframe-wrapper iframe {
+    /* Only forces this height on mobile screens */
+    height: fit-content !important; 
+    width: 100%;
+    border: var(--glass-border);
+    background-color: #000;
+  }
+
+  /* 8. Swiper UI Tweaks */
+  .swiper-button-next,
+  .swiper-button-prev {
+    display: none; /* Hide arrows on mobile for cleaner look, use touch-swipe */
+  }
+
+  /* 9. Next Project Navigation */
+  .next-project {
+    margin-top: 4rem;
+    padding-bottom: 2rem;
+  }
+
+  .next-link h2 {
+    font-size: 1.8rem;
+  }
+}
+
+@media (max-width: 480px) {
+  /* Ultra-small phones (360px) */
+  .project-meta {
+    grid-template-columns: 1fr; /* Single column stacking */
+    text-align: center;
+  }
+
+  .project-title {
+    font-size: 1.9rem;
+  }
+
+  .iframe-wrapper iframe {
+    height: 400px !important; /* Slightly shorter for small phones */
+  }
+
+  .image-grid {
+    grid-template-columns: 1fr;
+    gap: 1rem;
   }
 }

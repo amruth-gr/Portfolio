@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { ArrowLeft, ArrowRight, ExternalLink, PlayCircle, Image as ImageIcon } from "lucide-react";
-import work2 from "../assets/project-2.png";
+import work2 from "../assets/pdi.png";
 import work21 from "../assets/Two-1.png";
 import work22 from "../assets/Two-2.png";
 import work23 from "../assets/Two-3.png";
@@ -48,7 +48,7 @@ const mobileUrl = "https://www.figma.com/proto/iXPu4jzKh30koN8IM1jcfO/One-Platfo
       
       {/* 1. BACK NAVIGATION */}
       <div className="container nav-container">
-        <Link to="/works" className="back-link">
+        <Link to="/projects" className="back-link">
           <ArrowLeft size={20} /> Back to Projects
         </Link>
       </div>
@@ -246,7 +246,7 @@ const mobileUrl = "https://www.figma.com/proto/iXPu4jzKh30koN8IM1jcfO/One-Platfo
       <section className="next-project container">
         <hr className="divider"/>
         <div className="next-header"><span>Next Project</span></div>
-        <Link to="/works/project-3" className="next-link">
+        <Link to="/projects/project-3" className="next-link">
           <h2>Help Desk System</h2>
           <ArrowRight size={32} />
         </Link>

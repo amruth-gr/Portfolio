@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { ArrowLeft, ArrowRight, ExternalLink, PlayCircle, Image as ImageIcon } from "lucide-react";
-import work5 from "../assets/project-5.png";
+import work5 from "../assets/WM.png";
 import work51 from "../assets/five-1.png";
 import work52 from "../assets/five-2.png";
 import work53 from "../assets/five-3.png";
@@ -35,7 +35,7 @@ export default function WarrantyManagement() {
 
       {/* Back */}
       <div className="container nav-container">
-        <Link to="/works" className="back-link">
+        <Link to="/projects" className="back-link">
           <ArrowLeft size={20} /> Back to Projects
         </Link>
       </div>

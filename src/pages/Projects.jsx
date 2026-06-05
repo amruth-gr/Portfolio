@@ -3,10 +3,10 @@ import { ArrowUpRight } from "lucide-react";
 import "../styles/works.css";
 import "../styles/globals.css";
 import work1 from "../assets/project-1.png";
-import work2 from "../assets/project-2.png";
+import work2 from "../assets/pdi.png";
 import work3 from "../assets/project-3.png";
 import work4 from "../assets/project-4.png";
-import work5 from "../assets/project-5.png";
+import work5 from "../assets/WM.png";
 
 
 export default function Works() {
@@ -21,7 +21,7 @@ export default function Works() {
       image: work1, 
       fit: "contain",
       tags: ["UX Research", "Figma"],
-      link: "/works/project-1" 
+      link: "/projects/project-1" 
     },
     // 2. SAME AS HOME PAGE (Selected Work)
     {
@@ -32,7 +32,7 @@ export default function Works() {
       image: work2,
       fit: "contain",
       tags: ["Figma", "Design Systems"],
-      link: "/works/project-2"
+      link: "/projects/project-2"
     },
     // 3. ADDITIONAL PROJECT
     {
@@ -43,7 +43,7 @@ export default function Works() {
       image: work3,
       fit: "contain",
       tags: ["Web Design", "Mobile Design", "Prototyping"],
-      link: "/works/project-3"
+      link: "/projects/project-3"
     },
     // 4. ADDITIONAL PROJECT
     {
@@ -54,7 +54,7 @@ export default function Works() {
       image: work4,
       fit: "contain",
       tags: ["Web Design", "Prototyping", "UX Research"],
-      link: "/works/project-4"
+      link: "/projects/project-4"
     },
     // 5. ADDITIONAL PROJECT
     {
@@ -65,7 +65,7 @@ export default function Works() {
       image: work5,
       fit: "contain",
       tags: ["Web Design"],
-      link: "/works/project-5"
+      link: "/projects/project-5"
     }
   ];
 

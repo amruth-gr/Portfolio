@@ -6,7 +6,6 @@
   overflow-x: hidden; */
   width: 100%;
   align-items: center;
-  padding: 6rem 2rem;
   width: 100%;
   max-width: 100%;
   position: relative;
@@ -235,16 +234,11 @@
   transform: translateX(4px);
 }
 
-/* =========================================
-   RESPONSIVE
-   ========================================= */
-@media (max-width: 900px) {
-  .contact-grid {
-    grid-template-columns: 1fr;
-  }
-  .contact-form {
-    padding: 1.5rem;
-  }
+/* Hide the floating reCAPTCHA badge */
+.grecaptcha-badge { 
+  visibility: hidden !important; 
+  opacity: 0 !important;
+  pointer-events: none !important;
 }
 
 /* =========================================
@@ -314,52 +308,73 @@
 }
 
 /* =========================================
-   MOBILE RESPONSIVE STYLES
+   RESPONSIVE (MOBILE & TABLET)
    ========================================= */
 
+@media (max-width: 1024px) {
+  .contact-grid {
+    gap: 2.5rem;
+  }
+  .contact-form { padding: 2rem; }
+}
+
 @media (max-width: 900px) {
-  
+  .contact-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 768px) {
   .contact {
-    padding: 4rem 1.5rem; /* Less padding on mobile */
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+  }
+
+  /* Reduce Glow for Mobile */
+  .contact-hero::before {
+    width: 250px !important;
+    height: 250px !important;
+    top: 5% !important;
+    filter: blur(50px) !important;
   }
 
   .contact-grid {
-    grid-template-columns: 1fr; /* Stack into 1 column */
-    gap: 3rem;
+    grid-template-columns: 1fr; /* Stack */
+    gap: 2.5rem;
   }
 
-  /* Optional: Make Info appear above Form on mobile */
-  /* .contact-info { order: -1; } */
-
-  .contact-form {
-    padding: 1.5rem; /* Compact padding for form */
-  }
+  /* Move Form to top for better UX on mobile */
+  .contact-form { order: 1; }
+  .contact-info { order: 2; }
 
   .contact-title {
-    font-size: 2.5rem; /* Smaller title */
+    font-size: 2.2rem;
   }
 
-  /* Reduce glow size on mobile to prevent overflow */
-  .contact-hero::before {
-    width: 100%; 
-    height: 300px;
+  .contact-form {
+    padding: 1rem;
+    border-radius: 24px;
+  }
+
+  .social-item {
+    padding: 12px 16px;
   }
 }
 
 @media (max-width: 480px) {
-  .contact {
-    padding: 3rem 1.25rem;
-  }
-  
   .contact-title {
-    font-size: 2rem;
+    font-size: 1.9rem;
   }
-  
-  .contact-form {
-    padding: 1.25rem;
+
+  .info-card {
+    padding: 1.5rem;
   }
-  
+
+  .email-wrapper {
+    font-size: 1rem;
+  }
+
   .btn-submit {
-    width: 100%; /* Full width button on small phones */
+    width: 100%;
   }
 }

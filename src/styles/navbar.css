@@ -33,7 +33,7 @@
 /* LIGHT MODE NAVBAR PILL */
 [data-theme="light"] .navbar-pill {
   /* CHANGE THIS: 0.85 -> 0.5 */
-  background: rgba(255, 255, 255, 0.5); 
+  background: none; 
   
   /* ADD THIS: Boost saturation so colors behind don't look gray */
   backdrop-filter: blur(30px) saturate(200%);
@@ -148,6 +148,7 @@ html.light-mode .logo-light,
   /* Create the "Bubble" effect for the active tab */
   background: var(--bg-primary, #fff); 
   box-shadow: var(--glass-shadow); 
+  border: var(--glass-border);
 }
 
 /* Dark mode active bubble adjustment */
@@ -274,7 +275,7 @@ html.light-mode .logo-light,
 .resume-btn:hover {
   transform: translateY(-2px);
   box-shadow: 0 6px 20px rgba(99, 102, 241, 0.5);
-  background: #4f46e5; /* Slightly darker purple on hover */
+  background: var(--accent); /* Slightly darker purple on hover */
 }
 
 /* 3. The Tooltip (Hidden by default) */
@@ -322,50 +323,112 @@ html.light-mode .logo-light,
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
 }
 
+
 /* =========================================
    RESPONSIVE NAVBAR (Mobile & Tablet)
    ========================================= */
 
+/* Keep your desktop styles as they are, but make sure these classes are included */
+
+.nav-top-content {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  align-items: center;
+  height: 100%;
+}
+
+/* --- KEEP ALL YOUR EXISTING DESKTOP CSS UNTOUCHED --- */
+
+/* 1. Ensure the Toggle is hidden on Desktop */
+.menu-toggle {
+  display: none;
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: var(--text-primary);
+}
+
+.mobile-resume-btn {
+  display: none; /* Hidden on Desktop */
+}
+
+/* 2. MOBILE & TABLET OVERRIDES (The FIX) */
 @media (max-width: 768px) {
-  
-  /* 1. Adjust Pill Container */
-  .navbar {
-    top: auto; /* Remove top positioning */
-    bottom: 24px; /* Move to bottom for easier thumb access on mobile */
-  }
-
   .navbar-pill {
-    width: 90%; /* Slightly narrower */
-    height: 60px; /* More compact */
-    padding: 0 16px;
+    display: flex;
+    flex-wrap: wrap; 
+    justify-content: space-between; /* Pushes Logo left and Icons right */
+    align-items: center;
+    height: 70px; 
+    padding: 0 20px;
+    transition: all 0.4s ease;
   }
 
-  /* 2. Brand: Hide text, keep logo or just make smaller */
-  .brand-logo {
-    font-size: 18px;
-    display: none; /* Optional: Hide brand text to save space for links */
+  .navbar-pill.menu-open {
+    height: auto;
+    padding-bottom: 25px;
+    align-items: flex-start; /* Keeps the top row at the top */
+    padding-top: 15px;
   }
 
-  /* 3. Navigation Links: Horizontal Scroll */
-  .nav-links {
-    flex: 1; /* Take up available space */
-    justify-content: center; /* Center the links */
-    gap: 4px;
+  /* Force the logo and the right icons to stay on the top line */
+  .brand {
+    order: 1;
+    display: flex;
+    align-items: center;
+    height: 40px; /* Consistent height for alignment */
   }
 
-  .nav-item {
-    font-size: 14px; /* Smaller text */
-    padding: 8px 12px; /* Smaller touch targets */
-  }
-
-  /* 4. Right Side (Theme Toggle) */
   .nav-right {
-    gap: 8px;
+    order: 2;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    height: 40px; /* Match brand height */
+  }
+
+  /* Force the links to occupy the full width BELOW the top row */
+  .nav-links {
+    display: none; 
+    width: 100%; /* Takes full width */
+    order: 3;    /* Pushes it below Logo and Icons */
+    flex-direction: column;
+    gap: 10px;
+    padding-top: 25px;
+    background: none !important;
+    border: none !important;
+  }
+
+  .nav-links.active {
+    display: flex;
+  }
+
+  /* Keep the Toggle visible */
+  .menu-toggle {
+    display: block;
+    background: none;
+    border: none;
+    color: var(--text-primary);
+  }
+
+  .desktop-resume, 
+  .resume-wrapper {
+    display: none !important;
   }
   
-  .theme-toggle {
-    width: 30px;
-    height: 30px;
+  /* The blue resume button you wanted */
+  .mobile-resume-btn {
+    display: block;
+    width: 100%;
+    text-align: center;
+    padding: 14px 0;
+    background: var(--accent);
+    color: #fff !important;
+    font-weight: 700;
+    border-radius: 999px;
+    text-decoration: none;
+    margin-top: 5px;
   }
 }
 

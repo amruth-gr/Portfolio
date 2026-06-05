@@ -1,7 +1,6 @@
 /* ===============================
-   CSS RESET (SAFE + MODERN)
+    1. CSS RESET & SAFETY
 ================================ */
-
 *,
 *::before,
 *::after {
@@ -14,107 +13,112 @@ html,
 body {
   margin: 0;
   padding: 0;
-  overflow-x: hidden; /* Prevents horizontal scrollbar */
+  overflow-x: hidden; /* Critical: Prevents horizontal scroll on phones */
   width: 100%;
+  position: relative;
+  scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%; /* Prevents iOS font resizing */
 }
 
 body {
-  font-family: "Times new roman", system-ui, -apple-system, BlinkMacSystemFont,
+  font-family: "Times New Roman", system-ui, -apple-system, BlinkMacSystemFont,
     "Segoe UI", Roboto, sans-serif;
-  -webkit-font-smoothing: antialiased;
+  background: var(--bg);
+  color: var(--text-primary);
   line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+  /* Ensures everything stays centered if the screen is wider than content */
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
 }
 
-.container {
-  width: 100%; /* Ensure it takes full width */
-  margin: 0 auto; /* Center it */
-  max-width: 1600px;
-  padding: 0 2rem; /* Give it breathing room on edges */
-}
-
-/* Mobile Container Tweak */
-@media (max-width: 768px) {
-  .container {
-    padding: 0 1.5rem; /* Mobile: Slightly less padding for more space */
-  }
-}
-
-@media (max-width: 480px) {
-  .container {
-    padding: 0 1.25rem; /* Small Phone */
-  }
+#root {
+  width: 100%;
+  overflow-x: hidden;
 }
 
 /* ===============================
-   THEME TOKENS
-   Default = DARK
+    2. THEME TOKENS
 ================================ */
-
 :root {
-  /* Base */
   --bg: #0b0e14;
   --surface: rgba(255, 255, 255, 0.04);
   --surface-strong: rgba(255, 255, 255, 0.08);
-
-  /* Text */
   --text-primary: #f5f7fa;
   --text-secondary: #a7adbe;
-
-  /* Accent */
   --accent: #2563EB;
-
-  /* Glass system */
   --glass-bg: rgba(255, 255, 255, 0.06);
   --glass-border: 1px solid rgba(255, 255, 255, 0.15);
   --glass-blur: 14px;
   --glass-shadow: inset 0 -2px 2px rgba(255, 255, 255, 0.4),
     inset 0 -2px 6px rgba(0, 0, 0, 0.45);
- 
-
-  /* Glow */
   --glow-primary: 0 0 120px rgba(91, 124, 250, 0.35);
-
-  /* Radius */
   --radius-lg: 24px;
   --radius-pill: 999px;
 }
 
-/* ===============================
-   LIGHT THEME
-================================ */
-
 [data-theme="light"] {
-  --bg: #f6f7fb00;
+  --bg: #fff;
   --surface: rgba(255, 255, 255, 0.7);
   --surface-strong: rgba(255, 255, 255, 0.9);
-
   --text-primary: #0b0e14;
   --text-secondary: #5a6172;
-
-  --accent: #2563EB;
-
-  --glass-bg: rgba(255, 255, 255, 0);
+  --glass-bg: rgba(255, 255, 255, 0.3);
   --glass-border: 1px solid rgba(0, 0, 0, 0.1);
-  --glass-blur: 18px;
-  --glass-shadow: inset 0 -2px 2px rgba(144, 143, 143, 0.854),
-    inset 0 -2px 6px rgba(249, 249, 249, 0.45);
-  --glass-rim: inset 0 1px 1px rgba(255, 255, 255, 0.8);
-  --glow-primary: 0 0 120px rgba(79, 108, 255, 0.25);
+  --glass-shadow: inset 0 -2px 2px rgba(144, 143, 143, 0.4),
+    inset 0 -2px 6px rgba(249, 249, 249, 0.1);
 }
 
 /* ===============================
-   BASE LAYOUT
+    3. RESPONSIVE CONTAINERS
 ================================ */
+.container {
+  width: 100%;
+  margin: 0 auto;
+  /* Use clamp to decrease padding on small screens automatically */
+  padding: 0 clamp(1rem, 5vw, 2rem); 
+}
 
-body {
-  background: var(--bg);
-  color: var(--text-primary);
+/* --- TABLET BREAKPOINT --- */
+@media (max-width: 768px) {
+  .container {
+    padding: 0 1.25rem; /* 20px padding */
+  }
+
+  /* Force stack layouts for any multi-column sections */
+  .contact-grid, 
+  .hero-content, 
+  .project-grid {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center;
+    width: 100% !important;
+  }
+}
+
+/* --- MOBILE BREAKPOINT (Smallest Phones 320px+) --- */
+@media (max-width: 480px) {
+  section {
+    padding: 40px 0; /* Vertical spacing */
+    width: 100%;
+  }
+
+  h1 {
+    font-size: clamp(1.8rem, 8vw, 2.5rem) !important; /* Fluid typography */
+    text-align: center;
+    line-height: 1.2;
+  }
+
+  .badge {
+    margin: 0 auto 15px auto;
+    display: table; /* Centers the badge box */
+  }
 }
 
 /* ===============================
-   GLASS UTILITY
+    4. COMPONENTS & UTILITIES
 ================================ */
-
 .glass {
   background: var(--glass-bg);
   backdrop-filter: blur(var(--glass-blur));
@@ -123,25 +127,23 @@ body {
   box-shadow: var(--glass-shadow);
 }
 
-/* Buttons */
 .button-primary {
   background-color: var(--accent);
   color: white;
   font-size: 16px;
   font-weight: 600;
-  height: fit-content;
-  border-radius: 99px;
+  border-radius: var(--radius-pill);
   border: 3px solid var(--accent);
   text-decoration: none;
   padding: 0.6rem 1.5rem;
   transition: all 0.3s;
-  box-shadow:
-    0 8px 20px rgba(var(--accent), 0.25);
+  display: inline-block;
+  text-align: center;
 }
 
 .button-primary:hover {
-  box-shadow: 0 10px 40px rgba(27, 95, 222, 0.18);
   transform: translateY(-2px);
+  box-shadow: 0 10px 25px rgba(37, 99, 235, 0.3);
 }
 
 .button-secondary {
@@ -150,22 +152,12 @@ body {
   font-weight: 800;
   border: 3px solid var(--accent);
   padding: 0.6rem 1.5rem;
-  height: fit-content;
-  border-radius: 99px;
+  border-radius: var(--radius-pill);
   text-decoration: none;
   transition: all 0.3s;
+  display: inline-block;
+  text-align: center;
 }
-
-.button-secondary:hover {
-  /* background-color: var(--accent); */
-  box-shadow: 0 10px 40px rgba(27, 95, 222, 0.18);
-  /* color: white; */
-  transform: translateY(-2px);
-}
-
-/* ===============================
-   BADGE
-================================ */
 
 .badge {
   display: inline-block;
@@ -180,35 +172,15 @@ body {
   box-shadow: var(--glass-shadow);
 }
 
-/* LIGHT MODE BADGE FIX */
-[data-theme="light"] .badge {
-  /* 1. Remove the gray background */
-  background: #fff; 
-  
-  /* 2. Make the border slightly darker so it's visible on white */
-  border: var(--glass-border); 
-  
-  /* 3. Ensure text is black */
-  color: var(--text-primary);
-  
-  /* Optional: Remove shadow if you want it perfectly flat */
-  box-shadow: var(--glass-shadow);
+/* Image Safety */
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
 }
 
-/* ===============================
-   LINKS
-================================ */
-
+/* Link Reset */
 a {
   color: inherit;
   text-decoration: none;
-}
-
-/* ===============================
-   IMAGE SAFETY
-================================ */
-
-img {
-  max-width: 100%;
-  display: block;
 }

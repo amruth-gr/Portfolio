@@ -2,7 +2,7 @@
    ABOUT PAGE - MAIN STYLES
    ========================================= */
 .about {
-  padding: 4rem 2rem;
+  /* padding: 4rem 2rem; */
   overflow-x: hidden;
 }
 
@@ -48,7 +48,7 @@
 .about-intro {
   font-size: 1.05rem;
   line-height: 1.7;
-  max-width: 1400px;
+  max-width: 100%;
   color: var(--text-secondary);
 }
 
@@ -337,90 +337,105 @@
    ========================================= */
 
 @media (max-width: 900px) {
-  /* 1. Container Adjustments */
+  /* 1. Container & Hero */
   .about {
-    padding: 3rem 1.5rem; /* Tighter padding for mobile */
+    /* No horizontal padding - index.css handles this */
+    padding-top: 2rem;
+    padding-bottom: 4rem;
   }
 
-  /* 2. Hero Typography */
   .about-hero {
     margin-bottom: 3rem;
-    text-align: left; /* Optional: Center text on mobile if you prefer */
+    text-align: center; /* Center everything for better mobile flow */
+  }
+
+  /* Reduce radial glow so it's not "odd" on mobile */
+  .about-hero::before {
+    width: 250px !important;
+    height: 250px !important;
+    top: 0% !important;
+    background: radial-gradient(
+      50% 50% at 50% 50%, 
+      rgba(37, 99, 235, 0.15) 0%, 
+      transparent 100%
+    ) !important;
+    filter: blur(50px) !important;
   }
 
   .about-title {
-    font-size: 2.2rem; /* Smaller title */
+    font-size: clamp(2rem, 8vw, 2.5rem);
     margin: 1rem 0 1.5rem;
   }
 
   .about-intro {
     font-size: 1rem;
+    margin: 0 auto;
   }
   
-  /* 3. Principles Grid (Stacking) */
+  /* 2. Principles Grid */
   .about-principles {
     margin-top: 4rem;
   }
 
   .principles-grid {
-    grid-template-columns: 1fr; /* Stack cards vertically */
-    gap: 1.5rem;
+    grid-template-columns: 1fr; /* Single column stack */
+    gap: 1.25rem;
   }
   
   .principle-card {
-    padding: 1.5rem; /* Less padding inside cards */
-    text-align: left; /* Align text left for better readability on small screens */
+    padding: 2rem 1.5rem; 
+    text-align: center; /* Center-aligned for symmetry */
+    border-radius: 24px;
   }
 
-  /* 4. Experience & Marquee */
+  /* 3. Experience & Marquee */
   .experience {
     padding: 4rem 0;
+    text-align: center;
   }
 
   .marquee-container {
     margin-top: 2rem;
-    padding: 20px 0; /* Reduced padding */
-    mask-image: linear-gradient(to right, transparent, black 5%, black 95%, transparent);
-    -webkit-mask-image: linear-gradient(to right, transparent, black 5%, black 95%, transparent);
+    padding: 20px 0;
+    /* Adjusted mask for tighter mobile screens */
+    mask-image: linear-gradient(to right, transparent, black 15%, black 85%, transparent);
+    -webkit-mask-image: linear-gradient(to right, transparent, black 15%, black 85%, transparent);
   }
 
   .marquee-track {
     gap: 16px; 
-    animation-duration: 20s; /* Faster scroll on mobile feels better */
+    animation-duration: 25s; 
   }
 
   .tool-item {
-    padding: 10px 20px; /* Smaller pills */
+    padding: 10px 20px;
     font-size: 14px;
   }
 
-  /* 5. CTA Section */
+  /* 4. CTA Section */
   .about-cta {
-    margin: 3rem auto 1rem;
-    padding: 2.5rem 1.5rem;
-    border-radius: 20px;
+    margin: 3rem auto 0;
+    padding: 3rem 1.5rem;
+    border-radius: 24px;
+    width: 100%; /* Respects index.css padding */
   }
 
   .about-cta h2 {
     font-size: 1.75rem;
-    height: fit-content;
   }
 }
 
 @media (max-width: 480px) {
-  /* Extra tweaks for very small phones */
-  .about {
-    padding: 2.5rem 1.25rem;
-  }
-
+  /* Final tweaks for 360px phones */
   .about-title {
     font-size: 1.85rem;
   }
 
-  /* Prevent horizontal scroll from glow */
-  .about-hero::before {
-    width: 100%; 
-    height: 300px;
-    filter: blur(60px);
+  .principle-card {
+    padding: 1.5rem 1rem;
+  }
+
+  .principle-card h3 {
+    font-size: 1.4rem;
   }
 }

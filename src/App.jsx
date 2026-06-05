@@ -14,7 +14,7 @@ import ProjectFive from "./pages/ProjectFive";
 
 function App() {
   return (
-    <Router>
+    <Router basename="/">
       <ScrollToTop />
       {/* 1. The Navbar stays here so it shows on every page */}
       <Navbar /> 
@@ -23,14 +23,14 @@ function App() {
       <div className="page-content">
         <Routes>
           <Route path="/" element={<Home />} />
-          <Route path="/works" element={<Works />} />
+          <Route path="/projects" element={<Works />} />
           <Route path="/about" element={<About />} />
           <Route path="/contact" element={<Contact />} />
-          <Route path="/works/project-1" element={<ProjectOne />} />
-          <Route path="/works/project-2" element={<ProjectTwo />} />
-          <Route path="/works/project-3" element={<ProjectThree />} />
-          <Route path="/works/project-4" element={<ProjectFour />} />
-          <Route path="/works/project-5" element={<ProjectFive />} />
+          <Route path="/projects/project-1" element={<ProjectOne />} />
+          <Route path="/projects/project-2" element={<ProjectTwo />} />
+          <Route path="/projects/project-3" element={<ProjectThree />} />
+          <Route path="/projects/project-4" element={<ProjectFour />} />
+          <Route path="/projects/project-5" element={<ProjectFive />} />
         </Routes>
       </div>
       <Footer />

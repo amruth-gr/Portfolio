@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 import { ArrowUpRight, ArrowRight } from "lucide-react";
 import heroMockup from "../assets/Mockup.png";
 import work1 from "../assets/project-1.png";
-import work2 from "../assets/project-2.png";
+import work2 from "../assets/pdi.png";
 import "../styles/globals.css";
 import "../styles/home.css";
 
@@ -27,7 +27,7 @@ export default function Home() {
             </p>
 
             <div className="hero-actions">
-              <Link to="/works" className="button-primary">View Projects</Link>
+              <Link to="/projects" className="button-primary">View Projects</Link>
               <Link to="/contact" className="button-secondary">Get in touch</Link>
             </div>
           </div>
@@ -43,7 +43,7 @@ export default function Home() {
         <h2 className="section-title">Featured Projects</h2>
 
         {/* Project 1 */}
-        <Link to="/works/project-1" className="work-item">
+        <Link to="/projects/project-1" className="work-item">
           <div className="work-item-image">
             <img src={work1} alt="SaaS Dashboard Redesign" />
             {/* Overlay Removed */}
@@ -66,7 +66,7 @@ and make faster operational decisions.</p>
         </Link>
 
         {/* Project 2 (reversed layout) */}
-        <Link to="/works/project-2" className="work-item reverse">
+        <Link to="/projects/project-2" className="work-item reverse">
           <div className="work-item-image">
             <img src={work2} alt="Pre-Delivery Inspection (PDI)" />
             {/* Overlay Removed */}
@@ -89,7 +89,7 @@ accurate reporting, issue tracking, and seamless handovers.</p>
 
         {/* View All Button */}
         <div className="center-btn">
-          <Link to="/works" className="button-secondary">
+          <Link to="/projects" className="button-secondary">
             View All Projects <ArrowRight size={18} />
           </Link>
         </div>

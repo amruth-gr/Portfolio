@@ -16,7 +16,7 @@ html, body {
   margin: 0;
   padding: 0;
   width: 100%;
-  overflow-x: hidden; /* Prevents side-scrolling on mobile */
+  overflow-x: hidden; 
 }
 
 /* ===============================
@@ -24,25 +24,17 @@ html, body {
    =============================== */
 body {
   min-height: 100vh;
-  /* Uses variables defined in globals.css */
   background: var(--bg); 
   color: var(--text-primary);
-  
-  /* Body Font */
   font-family: 'Inter', system-ui, -apple-system, sans-serif;
   line-height: 1.6;
-  
-  /* Font Smoothing (Sharper text) */
   -webkit-font-smoothing: antialiased; 
   -moz-osx-font-smoothing: grayscale;
 }
 
-/* Ensure the React Root fills the screen */
 #root {
   min-height: 100vh;
   width: 100%;
-  /* display: flex;
-  flex-direction: column; */
 }
 
 /* ===============================
@@ -60,52 +52,52 @@ h1, h2, h3 {
 }
 
 /* ===============================
-   LAYOUT UTILITIES (The Fix)
+   LAYOUT UTILITIES
    =============================== */
 
-/* .page-content
-   Use this wrapper if you need a specific box for pages. 
-   This replaces your old fixed-margin code.
-*/
 .page-content, 
+.hero,
 .works, 
 .about, 
 .contact, 
 .project-page {
-  /* 1. FLUID WIDTH: Fills screen but stops at 1600px */
-  padding-top: 60px !important;
-  padding-left: 0rem;
-  padding-right: 0rem;
   width: 100%;
-  max-width: 95%; 
-  
-  /* 2. CENTERED: Equal space on left and right */
+  /* This prevents content from hitting the 1600px+ monitor edges */
+  max-width: 1400px; 
   margin: 0 auto; 
   
-  /* 3. SAFETY PADDING: Content won't touch screen edges */
-  /* padding: 0 0rem;  */
+  /* NAVBAR SPACE */
+  padding-top: 80px !important; 
   
-  /* 4. NAVBAR SPACE: Pushes content down so Navbar doesn't cover it */
+  /* THE FIX: Adding a consistent 5% gutter on sides */
+  /* This ensures content never touches the screen edge */
+  padding-left: 2% !important;
+  padding-right: 2% !important;
   
   min-height: 100vh;
+  box-sizing: border-box;
 }
 
-/* RESPONSIVE ADJUSTMENTS */
+/* RESPONSIVE GUTTERS */
 
-/* Tablet */
-@media (max-width: 1024px) {
-  .page-content {
-    padding: 100px 2rem 0; /* Keep top padding, side padding 2rem */
-  }
-}
-
-/* Mobile */
 @media (max-width: 768px) {
-  .page-content {
-    padding: 80px 1.5rem 0; /* Less padding on small screens */
+  .page-content, .hero, .works, .about, .contact, .project-page {
+    /* Slightly tighter gutters for mobile (approx 20px) */
+    padding-left: 1.25rem !important;
+    padding-right: 1.25rem !important;
+    padding-top: 60px !important;
   }
   
   h1 {
-    font-size: 2.5rem; /* Prevents huge text breaking mobile layout */
+    font-size: 2.2rem;
+    text-align: center;
+  }
+}
+
+@media (max-width: 480px) {
+  .page-content, .hero, .works, .about, .contact, .project-page {
+    /* Minimum safe gutter for small 360px phones */
+    padding-left: 1rem !important;
+    padding-right: 1rem !important;
   }
 }

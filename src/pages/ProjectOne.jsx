@@ -45,7 +45,7 @@ const webUrl = "https://www.figma.com/proto/FmomCwTpXvXdH1KeN7vCGi/Portfolio-Scr
       
       {/* 1. BACK NAVIGATION */}
       <div className="container nav-container">
-        <Link to="/works" className="back-link">
+        <Link to="/projects" className="back-link">
           <ArrowLeft size={20} /> Back to Projects
         </Link>
       </div>
@@ -171,53 +171,74 @@ const webUrl = "https://www.figma.com/proto/FmomCwTpXvXdH1KeN7vCGi/Portfolio-Scr
              {showEmbed ? (
                <>
                  {/* --- FLOATING TOGGLE SWITCH --- */}
-                 <div className="view-toggle" style={{
-                   position: 'absolute',
-                   bottom: '20px',  /* Places it at the bottom center */
-                   left: '50%',
-                   transform: 'translateX(-50%)',
-                   zIndex: 10,      /* Sits on top of iframe */
-                   background: 'rgba(0, 0, 0, 0.6)',
-                   backdropFilter: 'blur(10px)',
-                   border: '1px solid rgba(255,255,255,0.1)',
-                   padding: '4px',
-                   borderRadius: '99px',
-                   display: 'flex',
-                   gap: '4px'
-                 }}>
-                   <button 
-                     onClick={() => setViewMode("mobile")}
-                     style={{
-                       background: viewMode === "mobile" ? "white" : "transparent",
-                       color: viewMode === "mobile" ? "black" : "white",
-                       border: "none",
-                       padding: "8px 16px",
-                       borderRadius: "99px",
-                       fontSize: "0.85rem",
-                       fontWeight: "600",
-                       cursor: "pointer",
-                       transition: "all 0.2s ease"
-                     }}
-                   >
-                     Mobile
-                   </button>
-                   <button 
-                     onClick={() => setViewMode("web")}
-                     style={{
-                       background: viewMode === "web" ? "white" : "transparent",
-                       color: viewMode === "web" ? "black" : "white",
-                       border: "none",
-                       padding: "8px 16px",
-                       borderRadius: "99px",
-                       fontSize: "0.85rem",
-                       fontWeight: "600",
-                       cursor: "pointer",
-                       transition: "all 0.2s ease"
-                     }}
-                   >
-                     Web
-                   </button>
-                 </div>
+<div className="view-toggle" style={{
+    position: 'absolute',
+    bottom: '24px',
+    left: '50%',
+    transform: 'translateX(-50%)',
+    zIndex: 10,
+    /* 1. The Outer Shell: Dark & Deeply Blurred */
+    background: 'rgba(15, 15, 15, 0.4)', 
+    backdropFilter: 'blur(20px)',
+    WebkitBackdropFilter: 'blur(20px)',
+    border: '1px solid rgba(255, 255, 255, 0.05)',
+    padding: '4px',
+    borderRadius: '99px',
+    display: 'flex',
+    gap: '4px',
+    boxShadow: '0 10px 30px rgba(0, 0, 0, 0.5)'
+}}>
+    <button 
+        onClick={() => setViewMode("mobile")}
+        style={{
+            /* 2. Active State: High Contrast White Glass */
+            background: viewMode === "mobile" 
+                ? "rgba(255, 255, 255, 0.12)" 
+                : "transparent",
+            color: viewMode === "mobile" ? "#FFFFFF" : "rgba(255, 255, 255, 0.5)",
+            border: viewMode === "mobile" 
+                ? "1px solid rgba(255, 255, 255, 0.2)" 
+                : "1px solid transparent",
+            boxShadow: viewMode === "mobile" 
+                ? "var(--glass-shadow)" 
+                : "none",
+            padding: "8px 24px",
+            borderRadius: "99px",
+            fontSize: "0.85rem",
+            fontWeight: "600",
+            cursor: "pointer",
+            transition: "all 0.3s cubic-bezier(0.4, 0, 0.2, 1)",
+            /* Subtle depth effect */
+            transform: viewMode === "mobile" ? "scale(1)" : "scale(0.96)"
+        }}
+    >
+        Mobile
+    </button>
+    <button 
+        onClick={() => setViewMode("web")}
+        style={{
+            background: viewMode === "web" 
+                ? "rgba(255, 255, 255, 0.12)" 
+                : "transparent",
+            color: viewMode === "web" ? "#FFFFFF" : "rgba(255, 255, 255, 0.5)",
+            border: viewMode === "web" 
+                ? "1px solid rgba(255, 255, 255, 0.2)" 
+                : "1px solid transparent",
+            boxShadow: viewMode === "web" 
+                ? "var(--glass-shadow)" 
+                : "none",
+            padding: "8px 24px",
+            borderRadius: "99px",
+            fontSize: "0.85rem",
+            fontWeight: "600",
+            cursor: "pointer",
+            transition: "all 0.3s cubic-bezier(0.4, 0, 0.2, 1)",
+            transform: viewMode === "web" ? "scale(1)" : "scale(0.96)"
+        }}
+    >
+        Web
+    </button>
+</div>
       
                  {/* --- THE IFRAME --- */}
                  <iframe 
@@ -310,7 +331,7 @@ const webUrl = "https://www.figma.com/proto/FmomCwTpXvXdH1KeN7vCGi/Portfolio-Scr
       <section className="next-project container">
         <hr className="divider"/>
         <div className="next-header"><span>Next Project</span></div>
-        <Link to="/works/project-2" className="next-link">
+        <Link to="/projects/project-2" className="next-link">
           <h2>Pre-Delivery Inspection (PDI)</h2>
           <ArrowRight size={32} />
         </Link>

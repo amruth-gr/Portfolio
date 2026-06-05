@@ -36,7 +36,7 @@ export default function UserManagementSystem() {
       
       {/* Back Navigation */}
       <div className="container nav-container">
-        <Link to="/works" className="back-link">
+        <Link to="/projects" className="back-link">
           <ArrowLeft size={20} /> Back to Projects
         </Link>
       </div>
@@ -277,7 +277,7 @@ export default function UserManagementSystem() {
       <section className="next-project container">
         <hr className="divider" />
         <div className="next-header"><span>Next Project</span></div>
-        <Link to="/works/project-5" className="next-link">
+        <Link to="/projects/project-5" className="next-link">
           <h2>Warranty Management</h2>
           <ArrowRight size={32} />
         </Link>
